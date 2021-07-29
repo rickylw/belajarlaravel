@@ -13,6 +13,11 @@ class LowonganKerjaController extends Controller
         return view('admin.lowongan-pekerjaan.index', compact('lowonganPekerjaan'));
     }
 
+    public function detail($id) {
+        $lowonganPekerjaan = LowonganPekerjaan::where('id', $id)->first();
+        return view('admin.lowongan-pekerjaan.detail', compact('lowonganPekerjaan'));
+    }
+
     public function submit($id, $status) {
         $lowonganPekerjaan = LowonganPekerjaan::where('id', $id)->first();
         $lowonganPekerjaan->status = $status;

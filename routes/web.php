@@ -37,6 +37,7 @@ Route::middleware('role:admin')->group(function () {
 
     Route::get('/admin_dashboard/lowongan_kerja', [App\Http\Controllers\Admin\LowonganKerjaController::class, 'index'])->name('admin.lowongan-kerja.index');
     Route::get('/admin_dashboard/lowongan_kerja/submit/{id}/{status}', [App\Http\Controllers\Admin\LowonganKerjaController::class, 'submit'])->name('admin.lowongan-kerja.submit');
+    Route::get('/admin_dashboard/lowongan_kerja/detail/{id}', [App\Http\Controllers\Admin\LowonganKerjaController::class, 'detail'])->name('admin.lowongan-kerja.detail');
 });
 
 Route::middleware('role:unitkerja')->group(function () {

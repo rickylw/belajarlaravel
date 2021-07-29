@@ -40,14 +40,9 @@
                         <td><?php echo date('d M Y', strtotime($item->created_at))?></td>
                         
                         <td>
-                            <div class="btn-group">
-                                <a class="btn btn-success" href="{{ route('admin.lowongan-kerja.submit', [$item->id, 1]) }}">
-                                <i class="fas fa-check"></i>
-                                </a>
-                                <a class="btn btn-danger" href="{{ route('admin.lowongan-kerja.submit', [$item->id, 2]) }}">
-                                <i class="fas fa-times"></i>
-                                </a>
-                            </div>
+                            <form action="{{route('admin.lowongan-kerja.detail', $item->id)}}" method="GET">
+                                <button class="btn btn-primary" type="submit">Detail</button>
+                            </form>
                         </td>
                     </tr>
                 <?php $no++;?>

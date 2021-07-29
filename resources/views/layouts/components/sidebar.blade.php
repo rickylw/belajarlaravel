@@ -44,15 +44,17 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/data_pengajuan" class="nav-link">
+                <a href="{{route('admin.lowongan-kerja.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Data Pengajuan</p>
+                  <p>
+                    Pengajuan Lowongan
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/data_pelamar" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Datapelamar</p>
+                  <p>Data Pelamar</p>
                 </a>
               </li>
             </ul>
@@ -133,14 +135,6 @@
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Resign
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{route('admin.lowongan-kerja.index')}}" class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
-              <p>
-                Pengajuan Lowongan
               </p>
             </a>
           </li>
