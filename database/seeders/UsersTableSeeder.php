@@ -15,6 +15,21 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+      DB::table('tbl_role')->insert([
+        'nama' => 'pimpinan'
+      ]);
+      DB::table('tbl_role')->insert([
+        'nama' => 'admin'
+      ]);
+      DB::table('tbl_role')->insert([
+        'nama' => 'pelamar'
+      ]);
+      DB::table('tbl_role')->insert([
+        'nama' => 'unitkerja'
+      ]);
+      DB::table('tbl_role')->insert([
+        'nama' => 'pegawai'
+      ]);
     
             // DB::table('users')->truncate(); //for cleaning earlier data to avoid duplicate entries
             DB::table('users')->insert([
@@ -25,8 +40,14 @@ class UsersTableSeeder extends Seeder
             ]);
             DB::table('users')->insert([
               'name' => 'the seller user',
-              'email' => 'pimppinan@gmail.com',
+              'email' => 'pimpinan@gmail.com',
               'role' => 'pimpinan',
+              'password' => Hash::make('password'),
+            ]);
+            DB::table('users')->insert([
+              'name' => 'unit kerja',
+              'email' => 'unit@gmail.com',
+              'role' => 'unitkerja',
               'password' => Hash::make('password'),
             ]);
 

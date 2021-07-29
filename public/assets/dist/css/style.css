@@ -1,0 +1,11 @@
+.text-ellipsis-4 {
+    -webkit-line-clamp: 4;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.isi-justify{
+    text-align: justify;
+}

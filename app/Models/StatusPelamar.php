@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StatusPelamar extends Model
 {
-    protected $table = 'tbl_status_ppelamar';
+    protected $table = 'tbl_status_pelamar';
     protected $fillable = [ 
         "nama"
     ]; 

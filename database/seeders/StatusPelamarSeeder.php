@@ -19,10 +19,6 @@ class StatusPelamarSeeder extends Seeder
         ]);
 
         DB::table('tbl_status_pelamar')->insert([
-            'nama' => 'sudah di interview',
-        ]);
-
-        DB::table('tbl_status_pelamar')->insert([
             'nama' => 'sudah di acc pimpinan',
         ]);
 
