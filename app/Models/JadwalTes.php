@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JadwalTes extends Model
 {
+    public $timestamps = false;
     protected $table = 'tbl_jadwal_tes';
     protected $fillable = [ 
         "jadwal_tes",

@@ -9,9 +9,6 @@
             <div class="card-header">
                 <a class="btn btn-primary btn-md" href="{{ route('data_pelamar.create') }}">
                 <i class="fa fa-plus"></i> Tambah
-
-                <a class="btn btn-success btn-md ml-3" href="{{ route('data_pelamar.create') }}">
-                <i class="fa fa-plus"></i> Tambah Jadwal Tes
             </a>
         </div>
         

@@ -59,6 +59,14 @@ class UsersTableSeeder extends Seeder
               'password' => Hash::make('123'),
             ]);
 
+            
+            DB::table('users')->insert([
+              'name' => 'pelamar 2',
+              'email' => '456@gmail.com',
+              'role' => 'pelamar',
+              'password' => Hash::make('123'),
+            ]);
+
             DB::table('datapelamar')->insert([
               'nama' => 'pelamar',
               'tempat_lahir' => 'Palembang',
@@ -74,6 +82,24 @@ class UsersTableSeeder extends Seeder
               'surat_keterangan_sehat' => 'storage/pelamar/9/surat_keterangan_sehat_2021_07_28_08_42_37.jpg',
               'surat_pengalaman_kerja' => 'storage/pelamar/9/surat_pengalaman_kerja_2021_07_28_08_42_37.jpg',
               'id_user' => 3,
+              'status' => 1,
+            ]);
+
+            DB::table('datapelamar')->insert([
+              'nama' => 'pelamar 2',
+              'tempat_lahir' => 'Palembang 2',
+              'tanggal_lahir' => '2021-07-09',
+              'jenis_kelamin' => 1,
+              'email' => '456@gmail.com',
+              'no_hp' => '00000000',
+              'foto_kk' => 'storage/pelamar/9/kk_2021_07_28_09_55_22.png',
+              'foto_ktp' => 'storage/pelamar/9/ktp_2021_07_28_08_42_37.jpg',
+              'foto_ijazah' => 'storage/pelamar/9/ijazah_2021_07_28_08_42_37.jpg',
+              'foto_diri' => 'storage/pelamar/9/diri_2021_07_28_08_42_37.jpg',
+              'foto_skck' => 'storage/pelamar/9/skck_2021_07_28_08_42_37.png',
+              'surat_keterangan_sehat' => 'storage/pelamar/9/surat_keterangan_sehat_2021_07_28_08_42_37.jpg',
+              'surat_pengalaman_kerja' => 'storage/pelamar/9/surat_pengalaman_kerja_2021_07_28_08_42_37.jpg',
+              'id_user' => 4,
               'status' => 1,
             ]);
     }

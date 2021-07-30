@@ -38,6 +38,13 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/lowongan_kerja', [App\Http\Controllers\Admin\LowonganKerjaController::class, 'index'])->name('admin.lowongan-kerja.index');
     Route::get('/admin_dashboard/lowongan_kerja/submit/{id}/{status}', [App\Http\Controllers\Admin\LowonganKerjaController::class, 'submit'])->name('admin.lowongan-kerja.submit');
     Route::get('/admin_dashboard/lowongan_kerja/detail/{id}', [App\Http\Controllers\Admin\LowonganKerjaController::class, 'detail'])->name('admin.lowongan-kerja.detail');
+    
+    Route::get('/admin_dashboard/jadwal_tes', [App\Http\Controllers\Admin\JadwalTesController::class, 'index'])->name('admin.jadwal-tes.index');
+    Route::get('/admin_dashboard/jadwal_tes/create', [App\Http\Controllers\Admin\JadwalTesController::class, 'create'])->name('admin.jadwal-tes.create');
+    Route::post('/admin_dashboard/jadwal_tes/store', [App\Http\Controllers\Admin\JadwalTesController::class, 'store'])->name('admin.jadwal-tes.store');
+    Route::get('/admin_dashboard/jadwal_tes/delete/{id}', [App\Http\Controllers\Admin\JadwalTesController::class, 'delete'])->name('admin.jadwal-tes.delete');
+    Route::get('/admin_dashboard/jadwal_tes/edit/{id}', [App\Http\Controllers\Admin\JadwalTesController::class, 'edit'])->name('admin.jadwal-tes.edit');
+    Route::put('/admin_dashboard/jadwal_tes/update/{id}', [App\Http\Controllers\Admin\JadwalTesController::class, 'update'])->name('admin.jadwal-tes.update');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
@@ -50,6 +57,11 @@ Route::middleware('role:unitkerja')->group(function () {
     Route::get('/unitkerja_dashboard/lowongan_kerja/edit/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'edit'])->name('unitkerja.lowongan-kerja.edit');
     Route::put('/unitkerja_dashboard/lowongan_kerja/update/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'update'])->name('unitkerja.lowongan-kerja.update');
 });
+
+Route::middleware('role:pelamar')->group(function () {
+    Route::get('/pelamar_dashboard', [App\Http\Controllers\Pelamar\DashboardController::class, 'index']);
+});
+
 Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;
 Route::get('/pimpinan_dashboard', [App\Http\Controllers\Pimpinan\DashboardController::class, 'index'])->middleware('role:pimpinan');;
 

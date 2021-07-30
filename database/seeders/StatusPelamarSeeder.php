@@ -19,7 +19,7 @@ class StatusPelamarSeeder extends Seeder
         ]);
 
         DB::table('tbl_status_pelamar')->insert([
-            'nama' => 'sudah di acc pimpinan',
+            'nama' => 'menunggu acc pimpinan',
         ]);
 
         DB::table('tbl_status_pelamar')->insert([
