@@ -169,6 +169,10 @@ class DatapelamarController extends Controller
       $pelamar->no_hp = $request->no_hp;
 
       if($request->foto_kk){
+         //Hapus foto lama
+         $filenameLama = explode("/", $pelamar->foto_kk);
+         \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+
          $namefile = 'kk_'. date("Y_m_d_H_i_s") .'.'.$request->foto_kk->extension();
          $inputs['foto_kk'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
          request('foto_kk')->storeAs('pelamar/'.$user->id, $namefile, 'public');
@@ -176,6 +180,10 @@ class DatapelamarController extends Controller
      }
 
      if($request->foto_ktp){
+         //Hapus foto lama
+         $filenameLama = explode("/", $pelamar->foto_ktp);
+         \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+
          $namefile = 'ktp_'. date("Y_m_d_H_i_s") .'.'.$request->foto_ktp->extension();
          $inputs['foto_ktp'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
          request('foto_ktp')->storeAs('pelamar/'.$user->id, $namefile, 'public');
@@ -183,6 +191,10 @@ class DatapelamarController extends Controller
       }
 
       if($request->foto_ijazah){
+         //Hapus foto lama
+         $filenameLama = explode("/", $pelamar->foto_ijazah);
+         \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+   
           $namefile = 'ijazah_'. date("Y_m_d_H_i_s") .'.'.$request->foto_ijazah->extension();
           $inputs['foto_ijazah'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
           request('foto_ijazah')->storeAs('pelamar/'.$user->id, $namefile, 'public');
@@ -190,6 +202,10 @@ class DatapelamarController extends Controller
        }
 
       if($request->foto_diri){
+         //Hapus foto lama
+         $filenameLama = explode("/", $pelamar->foto_diri);
+         \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+   
          $namefile = 'diri_'. date("Y_m_d_H_i_s") .'.'.$request->foto_diri->extension();
          $inputs['foto_diri'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
          request('foto_diri')->storeAs('pelamar/'.$user->id, $namefile, 'public');
@@ -197,6 +213,10 @@ class DatapelamarController extends Controller
       }
 
       if($request->foto_skck){
+         //Hapus foto lama
+         $filenameLama = explode("/", $pelamar->foto_skck);
+         \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+   
          $namefile = 'skck_'. date("Y_m_d_H_i_s") .'.'.$request->foto_skck->extension();
          $inputs['foto_skck'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
          request('foto_skck')->storeAs('pelamar/'.$user->id, $namefile, 'public');
@@ -204,6 +224,10 @@ class DatapelamarController extends Controller
       }
 
       if($request->surat_keterangan_sehat){
+         //Hapus foto lama
+         $filenameLama = explode("/", $pelamar->surat_keterangan_sehat);
+         \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+   
          $namefile = 'surat_keterangan_sehat_'. date("Y_m_d_H_i_s") .'.'.$request->surat_keterangan_sehat->extension();
          $inputs['surat_keterangan_sehat'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
          request('surat_keterangan_sehat')->storeAs('pelamar/'.$user->id, $namefile, 'public');
@@ -211,12 +235,17 @@ class DatapelamarController extends Controller
       }
 
       if($request->surat_pengalaman_kerja){
+         if(isset($pelamar->surat_pengalaman_kerja)){
+            //Hapus foto lama
+            $filenameLama = explode("/", $pelamar->surat_pengalaman_kerja);
+            \Storage::disk('public')->delete('pelamar/'.$user->id.'/'.$filenameLama[count($filenameLama)-1]);
+         }
+   
          $namefile = 'surat_pengalaman_kerja_'. date("Y_m_d_H_i_s") .'.'.$request->surat_pengalaman_kerja->extension();
          $inputs['surat_pengalaman_kerja'] = 'storage/pelamar/'.$user->id.'/'.$namefile;
          request('surat_pengalaman_kerja')->storeAs('pelamar/'.$user->id, $namefile, 'public');
          $pelamar->surat_pengalaman_kerja = $inputs['surat_pengalaman_kerja'];
       }
-
        
       $pelamar->save();
 

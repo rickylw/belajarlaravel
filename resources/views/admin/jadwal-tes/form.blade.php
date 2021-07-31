@@ -1,7 +1,7 @@
 {{ csrf_field() }}
 
 <div class="form-group">
-<label for="nama" class="col-sm-2 control-label">Judul</label>
+<label for="nama" class="col-sm-2 control-label">Pelamar</label>
 <div class="col-sm-10">
 <div class="dropdown">
 @if (isset($pelamar))

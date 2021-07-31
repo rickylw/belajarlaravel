@@ -45,6 +45,13 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/jadwal_tes/delete/{id}', [App\Http\Controllers\Admin\JadwalTesController::class, 'delete'])->name('admin.jadwal-tes.delete');
     Route::get('/admin_dashboard/jadwal_tes/edit/{id}', [App\Http\Controllers\Admin\JadwalTesController::class, 'edit'])->name('admin.jadwal-tes.edit');
     Route::put('/admin_dashboard/jadwal_tes/update/{id}', [App\Http\Controllers\Admin\JadwalTesController::class, 'update'])->name('admin.jadwal-tes.update');
+    
+    Route::get('/admin_dashboard/hasil_interview', [App\Http\Controllers\Admin\HasilInterviewController::class, 'index'])->name('admin.hasil-interview.index');
+    Route::get('/admin_dashboard/hasil_interview/create', [App\Http\Controllers\Admin\HasilInterviewController::class, 'create'])->name('admin.hasil-interview.create');
+    Route::post('/admin_dashboard/hasil_interview/store', [App\Http\Controllers\Admin\HasilInterviewController::class, 'store'])->name('admin.hasil-interview.store');
+    Route::get('/admin_dashboard/hasil_interview/delete/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'delete'])->name('admin.hasil-interview.delete');
+    Route::get('/admin_dashboard/hasil_interview/edit/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'edit'])->name('admin.hasil-interview.edit');
+    Route::put('/admin_dashboard/hasil_interview/update/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'update'])->name('admin.hasil-interview.update');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
@@ -59,7 +66,8 @@ Route::middleware('role:unitkerja')->group(function () {
 });
 
 Route::middleware('role:pelamar')->group(function () {
-    Route::get('/pelamar_dashboard', [App\Http\Controllers\Pelamar\DashboardController::class, 'index']);
+    Route::get('/pelamar_dashboard/informasi_diri', [App\Http\Controllers\Pelamar\DashboardController::class, 'index'])->name('pelamar.informasi-diri');
+    Route::get('/pelamar_dashboard/jadwal_tes', [App\Http\Controllers\Pelamar\DashboardController::class, 'jadwalTes'])->name('pelamar.jadwal-tes');
 });
 
 Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;
