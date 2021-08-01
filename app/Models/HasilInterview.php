@@ -13,6 +13,7 @@ class HasilInterview extends Model
         "lampiran", 
         "jenis_interview", 
         "status", 
-        "id_pelamar"
+        "id_pelamar",
+        "id_jenis_interview"
     ];
 }

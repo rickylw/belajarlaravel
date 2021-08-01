@@ -32,9 +32,7 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $item->nama_pelamar }}</td>
-                        <td>
-                            <?php echo (($item->jenis_interview == 1) ? 'Interview' : 'Pembahasan Kontrak Pegawai') ?>
-                        </td>                        
+                        <td>{{ $item->jenis_interview }}</td>                        
                         <td>
                             <?php echo (($item->status == 0) ? 'Belum di acc' : (($item->status == 1) ? 'Diterima' : 'Ditolak')) ?>
                         </td>                    

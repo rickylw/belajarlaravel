@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\HasilInterview; 
 use App\Models\Datapelamar; 
+use App\Models\JenisInterview; 
 use Illuminate\Support\Facades\DB;
 
 class HasilInterviewController extends Controller
@@ -13,23 +14,27 @@ class HasilInterviewController extends Controller
     public function index() {
         $hasilInterview = DB::table('tbl_hasil_interview')
                        ->join('datapelamar', 'tbl_hasil_interview.id_pelamar', '=', 'datapelamar.id')
-                       ->select(DB::raw('tbl_hasil_interview.*, datapelamar.nama as nama_pelamar'))
+                       ->join('tbl_jenis_interview', 'tbl_jenis_interview.id', '=', 'tbl_hasil_interview.id_jenis_interview')
+                       ->select(DB::raw('tbl_hasil_interview.*, datapelamar.nama as nama_pelamar, tbl_jenis_interview.nama as jenis_interview'))
                        ->paginate(10);
         return view('admin.hasil-interview.index', compact('hasilInterview'));
     }
 
     public function create() {
         $pelamar = Datapelamar::all();
-        return view('admin.hasil-interview.create', compact('pelamar'));
+        $jenisInterview = JenisInterview::all();
+        return view('admin.hasil-interview.create', compact('pelamar', 'jenisInterview'));
     }
 
     public function edit($id) {
         $hasilInterview = DB::table('tbl_hasil_interview')
                        ->join('datapelamar', 'tbl_hasil_interview.id_pelamar', '=', 'datapelamar.id')
-                       ->select(DB::raw('tbl_hasil_interview.*, datapelamar.nama as nama_pelamar'))
+                       ->join('tbl_jenis_interview', 'tbl_jenis_interview.id', '=', 'tbl_hasil_interview.id_jenis_interview')
+                       ->select(DB::raw('tbl_hasil_interview.*, datapelamar.nama as nama_pelamar, tbl_jenis_interview.nama as jenis_interview'))
                        ->where('tbl_hasil_interview.id_pelamar', $id)
                        ->first();
-        return view('admin.hasil-interview.edit', compact('hasilInterview'));
+        $jenisInterview = JenisInterview::all();
+        return view('admin.hasil-interview.edit', compact('hasilInterview', 'jenisInterview'));
     }
 
     public function store(Request $request) 
@@ -43,7 +48,7 @@ class HasilInterviewController extends Controller
 
         $hasilInterview = new HasilInterview();
         $hasilInterview->hasil_interview = $request->editor;
-        $hasilInterview->jenis_interview = $request->jenis_interview;
+        $hasilInterview->id_jenis_interview = $request->jenis_interview;
         $hasilInterview->status = 0;
         $hasilInterview->id_pelamar = $request->pelamar;
 
@@ -87,7 +92,7 @@ class HasilInterviewController extends Controller
 
         $hasilInterview = HasilInterview::where('id', $id)->first();
         $hasilInterview->hasil_interview = $request->editor;
-        $hasilInterview->jenis_interview = $request->jenis_interview;
+        $hasilInterview->id_jenis_interview = $request->jenis_interview;
 
         if($request->lampiran){
             if(isset($hasilInterview->lampiran)){

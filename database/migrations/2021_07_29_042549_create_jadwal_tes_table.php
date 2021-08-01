@@ -18,8 +18,9 @@ class CreateJadwalTesTable extends Migration
             $table->dateTime('jadwal_tes');
             $table->longText('deskripsi');
             $table->bigInteger('id_pelamar')->unsigned();
+            $table->bigInteger('id_jenis_interview')->unsigned();
             //menambahkan relasi  
-            $table->unique('id_pelamar'); 
+            $table->foreign('id_jenis_interview')->references('id')->on('tbl_jenis_interview'); 
             $table->foreign('id_pelamar')->references('id')->on('datapelamar'); 
         });
     }

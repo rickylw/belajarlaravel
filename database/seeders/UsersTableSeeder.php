@@ -15,6 +15,15 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+      
+      DB::table('tbl_jenis_interview')->insert([
+        'nama' => 'Interview'
+      ]);
+
+      DB::table('tbl_jenis_interview')->insert([
+        'nama' => 'Pembahasan Kontrak Pegawai'
+      ]);
+
       DB::table('tbl_role')->insert([
         'nama' => 'pimpinan'
       ]);

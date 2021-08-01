@@ -17,10 +17,11 @@
                 <thead>
                     <tr>
                         <th style="width: 5%">#</th>
-                        <th style="width: 20%">Jadwal Tes</th>
-                        <th style="width: 40%">Deskripsi</th>
+                        <th style="width: 15%">Jadwal Tes</th>
+                        <th style="width: 15%">Jenis Interview</th>
+                        <th style="width: 35%">Deskripsi</th>
                         <th style="width: 20%">Nama Pelamar</th>
-                        <th style="width: 15%">Aksi</th>
+                        <th style="width: 10%">Aksi</th>
                     </tr>
                 </thead>
 
@@ -31,6 +32,7 @@
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $item->jadwal_tes }}</td>
+                        <td>{{ $item->jenis_interview }}</td>
                         <td>
                             <div class="text-ellipsis-4 isi-justify">
                                 <?php echo $item->deskripsi ?>

@@ -17,10 +17,11 @@ class CreateTblHasilInterview extends Migration
             $table->id();
             $table->longText('hasil_interview')->collation('utf8mb4_general_ci');
             $table->text("lampiran")->nullable(); 
-            $table->integer("jenis_interview"); 
             $table->integer("status"); 
             $table->bigInteger('id_pelamar')->unsigned();
+            $table->bigInteger('id_jenis_interview')->unsigned();
             //menambahkan relasi 
+            $table->foreign('id_jenis_interview')->references('id')->on('tbl_jenis_interview'); 
             $table->foreign('id_pelamar')->references('id')->on('datapelamar'); 
             $table->timestamps();
         });

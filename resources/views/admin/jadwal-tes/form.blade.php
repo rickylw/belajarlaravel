@@ -22,6 +22,23 @@
 </div>
 
 <div class="form-group">
+    <label for="nama" class="col-sm-2 control-label">Jenis Interview</label>
+    <div class="col-sm-10">
+    <div class="dropdown">
+    <button class="btn btn-light dropdown-toggle" type="button" id="btn-jenis-interview" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{$jadwalTes->jenis_interview ?? 'Pilih Jenis Interview'}}
+    </button>
+    <input type="hidden" id="jenis-interview" name="jenis_interview" value="{{$jadwalTes->id_jenis_interview ?? ''}}">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-jenis-interview">
+        @foreach ($jenisInterview as $v)
+            <a class="dropdown-item" href="#" id="{{$v->id}}">{{$v->nama}}</a>
+        @endforeach
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class="form-group">
 <label for="usia" class="col-sm-2 control-label">Tanggal Tes</label>
 <div class="col-sm-10">
 <input type="date" name="tanggal_tes" class="form-control" value="<?php echo isset($jadwalTes->jadwal_tes) ? date('Y-m-d', strtotime($jadwalTes->jadwal_tes)) : ''?>">

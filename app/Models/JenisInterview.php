@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JadwalTes extends Model
+class JenisInterview extends Model
 {
     public $timestamps = false;
-    protected $table = 'tbl_jadwal_tes';
+    protected $table = 'tbl_jenis_interview';
     protected $fillable = [ 
-        "jadwal_tes",
-        "deskripsi",
-        "id_pelamar",
-        "id_jenis_interview"
+        "nama",
     ]; 
 }
