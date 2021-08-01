@@ -31,7 +31,7 @@ class HasilInterviewController extends Controller
                        ->join('datapelamar', 'tbl_hasil_interview.id_pelamar', '=', 'datapelamar.id')
                        ->join('tbl_jenis_interview', 'tbl_jenis_interview.id', '=', 'tbl_hasil_interview.id_jenis_interview')
                        ->select(DB::raw('tbl_hasil_interview.*, datapelamar.nama as nama_pelamar, tbl_jenis_interview.nama as jenis_interview'))
-                       ->where('tbl_hasil_interview.id_pelamar', $id)
+                       ->where('tbl_hasil_interview.id', $id)
                        ->first();
         $jenisInterview = JenisInterview::all();
         return view('admin.hasil-interview.edit', compact('hasilInterview', 'jenisInterview'));
@@ -44,6 +44,14 @@ class HasilInterviewController extends Controller
             'jenis_interview' => 'required',
             'editor' => 'required'
         ]);
+
+        $tmp = HasilInterview::where('id_pelamar', $request->pelamar)->where('id_jenis_interview', $request->jenis_interview)->get();
+        if(count($tmp) > 0){
+            return redirect()->route("admin.hasil-interview.index")->with( 
+            "failed", 
+            "Data gagal disimpan." 
+            ); 
+        }
 
 
         $hasilInterview = new HasilInterview();
@@ -85,14 +93,12 @@ class HasilInterviewController extends Controller
     public function update(Request $request, $id) 
     { 
         $this->validate($request, [ 
-            'jenis_interview' => 'required',
             'editor' => 'required'
         ]);
 
 
         $hasilInterview = HasilInterview::where('id', $id)->first();
         $hasilInterview->hasil_interview = $request->editor;
-        $hasilInterview->id_jenis_interview = $request->jenis_interview;
 
         if($request->lampiran){
             if(isset($hasilInterview->lampiran)){

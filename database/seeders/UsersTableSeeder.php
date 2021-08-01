@@ -90,7 +90,7 @@ class UsersTableSeeder extends Seeder
               'foto_skck' => 'storage/pelamar/9/skck_2021_07_28_08_42_37.png',
               'surat_keterangan_sehat' => 'storage/pelamar/9/surat_keterangan_sehat_2021_07_28_08_42_37.jpg',
               'surat_pengalaman_kerja' => 'storage/pelamar/9/surat_pengalaman_kerja_2021_07_28_08_42_37.jpg',
-              'id_user' => 3,
+              'id_user' => 4,
               'status' => 1,
             ]);
 
@@ -108,7 +108,7 @@ class UsersTableSeeder extends Seeder
               'foto_skck' => 'storage/pelamar/9/skck_2021_07_28_08_42_37.png',
               'surat_keterangan_sehat' => 'storage/pelamar/9/surat_keterangan_sehat_2021_07_28_08_42_37.jpg',
               'surat_pengalaman_kerja' => 'storage/pelamar/9/surat_pengalaman_kerja_2021_07_28_08_42_37.jpg',
-              'id_user' => 4,
+              'id_user' => 5,
               'status' => 1,
             ]);
     }

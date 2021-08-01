@@ -42,7 +42,7 @@
                         
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-success" href="{{ route('admin.hasil-interview.edit', $item->id_pelamar) }}">
+                                <a class="btn btn-success" href="{{ route('admin.hasil-interview.edit', $item->id) }}">
                                 <i class="fas fa-pencil-alt"></i>
                                 </a>
                                 <a class="btn btn-danger" href="{{ route('admin.hasil-interview.delete', $item->id) }}">

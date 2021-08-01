@@ -32,12 +32,7 @@ class JadwalTesController extends Controller
     }
 
     public function create() {
-        $pelamar = DB::table('datapelamar')
-                       ->leftJoin('tbl_jadwal_tes', 'tbl_jadwal_tes.id_pelamar', '=', 'datapelamar.id')
-                       ->select(DB::raw('datapelamar.*'))
-                       ->where('datapelamar.status', 1)
-                       ->whereNull('tbl_jadwal_tes.id')
-                       ->get();
+        $pelamar = Datapelamar::all();
         $jenisInterview = JenisInterview::all();
         return view('admin.jadwal-tes.create', compact('pelamar', 'jenisInterview'));
     }
@@ -51,6 +46,14 @@ class JadwalTesController extends Controller
             'pelamar' => 'required',
             'jenis_interview' => 'required'
         ]);
+
+        $tmp = JadwalTes::where('id_pelamar', $request->pelamar)->where('id_jenis_interview', $request->jenis_interview)->get();
+        if(count($tmp) > 0){
+            return redirect()->route("admin.jadwal-tes.index")->with( 
+            "failed", 
+            "Data gagal disimpan." 
+            ); 
+        }
 
 
         $jadwalTes = new JadwalTes();
@@ -80,13 +83,11 @@ class JadwalTesController extends Controller
             'tanggal_tes' => 'required', 
             'waktu_tes' => 'required',
             'editor' => 'required',
-            'jenis_interview' => 'required'
         ]);
 
         $jadwalTes = JadwalTes::where('id', $id)->first();
         $jadwalTes->jadwal_tes = $request->tanggal_tes. ' ' . $request->waktu_tes;
         $jadwalTes->deskripsi = $request->editor;
-        $jadwalTes->id_jenis_interview = $request->jenis_interview;
         $jadwalTes->save();
 
         return redirect()->route("admin.jadwal-tes.index")->with( 

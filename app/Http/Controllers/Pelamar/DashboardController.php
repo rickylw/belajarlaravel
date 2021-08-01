@@ -18,10 +18,8 @@ class DashboardController extends Controller
     }
     public function jadwalTes() {
       $datapelamar = Datapelamar::where('id_user', Auth::id())->first();
-      $jadwalTes = JadwalTes::where('id_pelamar', $datapelamar->id)->first();
-      
-      
-
-      return view('pelamar.jadwal-tes', compact('jadwalTes'));
+      $jadwalTesInterview = JadwalTes::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 1)->first();
+      $jadwalTesKontrakPegawai = JadwalTes::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 2)->first();
+      return view('pelamar.jadwal-tes', compact('jadwalTesInterview', 'jadwalTesKontrakPegawai'));
     }
 }
