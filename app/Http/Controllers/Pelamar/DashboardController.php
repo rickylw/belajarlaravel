@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Datapelamar; 
 use App\Models\JadwalTes; 
+use App\Models\HasilInterview; 
 use Auth;
 
 class DashboardController extends Controller
@@ -20,6 +21,9 @@ class DashboardController extends Controller
       $datapelamar = Datapelamar::where('id_user', Auth::id())->first();
       $jadwalTesInterview = JadwalTes::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 1)->first();
       $jadwalTesKontrakPegawai = JadwalTes::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 2)->first();
-      return view('pelamar.jadwal-tes', compact('jadwalTesInterview', 'jadwalTesKontrakPegawai'));
+
+      $hasilInterview = HasilInterview::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 1)->first();
+      $hasilKontrakPegawai = HasilInterview::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 2)->first();
+      return view('pelamar.jadwal-tes', compact('jadwalTesInterview', 'jadwalTesKontrakPegawai', 'hasilInterview', 'hasilKontrakPegawai'));
     }
 }

@@ -70,8 +70,17 @@ Route::middleware('role:pelamar')->group(function () {
     Route::get('/pelamar_dashboard/jadwal_tes', [App\Http\Controllers\Pelamar\DashboardController::class, 'jadwalTes'])->name('pelamar.jadwal-tes');
 });
 
+Route::middleware('role:pimpinan')->group(function () {
+    Route::get('/pimpinan_dashboard', [App\Http\Controllers\Pimpinan\DashboardController::class, 'index']);
+    Route::get('/pimpinan_dashboard/data_pelamar', [App\Http\Controllers\Pimpinan\DataPelamarController::class, 'index'])->name('pimpinan.data-pelamar.index');
+    Route::get('/pimpinan_dashboard/data_pelamar/{id}', [App\Http\Controllers\Pimpinan\DataPelamarController::class, 'detail'])->name('pimpinan.data-pelamar.detail');
+    
+    Route::get('/pimpinan_dashboard/hasil_interview', [App\Http\Controllers\Pimpinan\HasilInterviewController::class, 'index'])->name('pimpinan.hasil-interview.index');
+    Route::get('/pimpinan_dashboard/hasil_interview/{id}', [App\Http\Controllers\Pimpinan\HasilInterviewController::class, 'detail'])->name('pimpinan.hasil-interview.detail');
+    Route::get('/pimpinan_dashboard/hasil_interview/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\HasilInterviewController::class, 'submit'])->name('pimpinan.hasil-interview.submit');
+});
+
 Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;
-Route::get('/pimpinan_dashboard', [App\Http\Controllers\Pimpinan\DashboardController::class, 'index'])->middleware('role:pimpinan');;
 
 Route::get('/hai', function () {
     return view('halo');

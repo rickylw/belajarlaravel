@@ -69,6 +69,10 @@ class HasilInterviewController extends Controller
 
         $hasilInterview->save();
 
+        $pelamar = Datapelamar::where('id', $request->pelamar)->first();
+        $pelamar->status = 2;
+        $pelamar->save();
+
         return redirect()->route("admin.hasil-interview.index")->with( 
         "success", 
         "Data berhasil disimpan." 
