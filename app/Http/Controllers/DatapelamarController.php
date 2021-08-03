@@ -2,6 +2,7 @@
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request; 
 use App\Models\Datapelamar; 
+use App\Models\HasilInterview; 
 use App\Models\StatusPelamar; 
 use Illuminate\Support\Facades\DB;
 // namespace App\Http\Controllers; 
@@ -144,6 +145,20 @@ class DatapelamarController extends Controller
       $data = Datapelamar::findOrFail($datapelamar); 
       $data->datapelamar = Datapelamar::first(); 
       $data->user = User::find($data->id_user); 
+
+      $hasilInterview = HasilInterview::where('id_pelamar', $datapelamar)->get();
+      $isLolos = true;
+      if(count($hasilInterview) < 2){
+         $isLolos = false;
+      }
+      else{
+         foreach($hasilInterview as $v){
+            if($v->status == 2){
+               $isLolos = false;
+            }
+         }
+      }
+      $data->isLolos = $isLolos;
       //tampilkan resources/views/datapelamar/edit.blade.php 
       return view("datapelamar.edit", $data); 
    } 
@@ -266,11 +281,15 @@ class DatapelamarController extends Controller
       ); 
    } 
       
-      public function destroy($datapelamar) 
-      { 
-      $dataDatapelamar = Datapelamar::findOrFail($datapelamar); 
-      $dataDatapelamar->delete(); 
-      $dataUser = User::findOrFail($dataDatapelamar->id_user); 
-      $dataUser->delete(); 
-      } 
+   public function destroy($datapelamar) 
+   { 
+   $dataDatapelamar = Datapelamar::findOrFail($datapelamar); 
+   $dataDatapelamar->delete(); 
+   $dataUser = User::findOrFail($dataDatapelamar->id_user); 
+   $dataUser->delete(); 
    } 
+
+   public function cetakSK($id){
+      
+   }
+} 

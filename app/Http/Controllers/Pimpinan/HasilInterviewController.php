@@ -34,18 +34,6 @@ class HasilInterviewController extends Controller
         $hasilInterview->status = $status;
         $hasilInterview->save();
 
-        //Kemungkinan di admin
-        $pelamar = Datapelamar::where('id', $hasilInterview->id_pelamar)->first();
-
-        if($status == 2){
-            $pelamar->status = 4;
-            $pelamar->save();
-        }
-        else if($hasilInterview->id_jenis_interview == 2 && $status == 1){
-            $pelamar->status = 3;
-            $pelamar->save();
-        }
-
         return redirect()->route("pimpinan.hasil-interview.index")->with( 
         "success", 
         "Data berhasil disimpan." 
