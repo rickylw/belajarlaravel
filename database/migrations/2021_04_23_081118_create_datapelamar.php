@@ -28,7 +28,7 @@ class CreateDatapelamar extends Migration
             $table->text("foto_skck");
             $table->text("surat_keterangan_sehat");
             $table->text("surat_pengalaman_kerja")->nullable();
-            $table->text("surat_keterangan_diterima")->nullable();
+            $table->text("surat_keterangan_lulus")->nullable();
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger("status")->unsigned(); 
             $table->timestamps();

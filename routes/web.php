@@ -29,7 +29,8 @@ Route::middleware('role:admin')->group(function () {
 
     Route::post('/data_pelamar/store', [App\Http\Controllers\DatapelamarController::class, 'store'])->name('datapelamar.store');;
     Route::put('/data_pelamar/update/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'update'])->name('datapelamar.update');;
-    Route::put('/data_pelamar/cetak_sk/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'cetakSK'])->name('datapelamar.cetak-sk');;
+    Route::get('/data_pelamar/cetak_sk/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'cetakSK'])->name('datapelamar.cetak-sk');;
+    Route::get('/data_pelamar/ubah_status/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'ubahStatus'])->name('datapelamar.ubah-status');;
     
     Route::post('/penugasan/store', [App\Http\Controllers\PenugasanController::class, 'store'])->name('penugasan.store');; 
     Route::post('/resign/store', [App\Http\Controllers\ResignController::class, 'store'])->name('resign.store');; 

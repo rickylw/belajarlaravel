@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 // namespace App\Http\Controllers; 
 // use Illuminate\Http\Request; 
 use App\Models\User; 
+use PDF;
 // use App\Datapelamar; 
 // use App\Datapengajuan; 
 use Hash; 
@@ -143,7 +144,7 @@ class DatapelamarController extends Controller
    public function edit($datapelamar) 
    { 
       $data = Datapelamar::findOrFail($datapelamar); 
-      $data->datapelamar = Datapelamar::first(); 
+      $data->datapelamar = Datapelamar::where('id',$datapelamar)->first(); 
       $data->user = User::find($data->id_user); 
 
       $hasilInterview = HasilInterview::where('id_pelamar', $datapelamar)->get();
@@ -162,6 +163,16 @@ class DatapelamarController extends Controller
       //tampilkan resources/views/datapelamar/edit.blade.php 
       return view("datapelamar.edit", $data); 
    } 
+
+   public function ubahStatus($id){
+      $pelamar = Datapelamar::where('id', $id)->first();
+      $pelamar->status = 4;
+      $pelamar->save(); 
+      return redirect()->route("data_pelamar.index")->with( 
+         "success", 
+         "Data berhasil disimpan." 
+      ); 
+   }
 
    public function update(Request $request, $id) 
    { 
@@ -290,6 +301,19 @@ class DatapelamarController extends Controller
    } 
 
    public function cetakSK($id){
-      
+      $pelamar = Datapelamar::where('id', $id)->first();
+      $pdf = PDF::loadView('pdf/surat-keterangan-lulus', compact('pelamar'));
+
+      $namefile = 'surat_keterangan_lulus_'. date("Y_m_d_H_i_s") .'.pdf';
+      $inputs['surat_keterangan_lulus'] = 'storage/pelamar/'.$pelamar->id_user.'/'.$namefile;
+      $pdf->save($inputs['surat_keterangan_lulus']);
+      $pelamar->surat_keterangan_lulus = $inputs['surat_keterangan_lulus'];
+      $pelamar->status = 3;
+
+      $pelamar->save(); 
+      return redirect()->route("data_pelamar.index")->with( 
+         "success", 
+         "Data berhasil disimpan." 
+      ); 
    }
 } 
