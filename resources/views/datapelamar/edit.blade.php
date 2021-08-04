@@ -20,7 +20,7 @@
     <div class="row justify-content-between">
         <p class="my-auto">Ubah Data</p>
         @if ($isLolos)
-            <a href="{{(isset($datapelamar->surat_keterangan_lulus) ? asset($datapelamar->surat_keterangan_lulus) : route('datapelamar.cetak-sk', $datapelamar->id))}}" class="btn btn-success ml-4">Cetak SK</a>
+            <a href="{{(isset($datapelamar->surat_keterangan_lulus) ? asset($datapelamar->surat_keterangan_lulus) : route('datapelamar.input-sk', $datapelamar->id))}}" class="btn btn-success ml-4">Cetak SK</a>
         @else
             <a href="{{route('datapelamar.ubah-status', $datapelamar->id)}}" class="btn btn-danger ml-4">Peserta Gagal</a>
         @endif

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblDatapegawai extends Migration
+class CreateDataUnitKerjasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTblDatapegawai extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_datapegawai', function (Blueprint $table) {
+        Schema::create('tbl_dataunitkerja', function (Blueprint $table) {
             $table->id();
             $table->string('nip');
             $table->string('nama'); 
@@ -49,6 +49,6 @@ class CreateTblDatapegawai extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_datapegawai');
+        Schema::dropIfExists('data_unit_kerjas');
     }
 }

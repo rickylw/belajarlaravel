@@ -71,6 +71,31 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item menu">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Pegawai
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.data-pegawai.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Pegawai
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/data_pelamar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kontrak Pegawai</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="/pensiun" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

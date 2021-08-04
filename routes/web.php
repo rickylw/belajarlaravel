@@ -21,7 +21,7 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('resign', App\Http\Controllers\ResignController::class);
     Route::resource('datapegawai', App\Http\Controllers\DatapegawaiController::class);
     Route::resource('mutasipegawai', App\Http\Controllers\MutasipegawaiController::class);
-    Route::get('/admin_dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('/admin_dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/data_pengajuan/store', [App\Http\Controllers\DatapengajuanController::class, 'store'])->name('datapengajuan.store');;
     Route::post('/lembur/store', [App\Http\Controllers\LemburController::class, 'store'])->name('lembur.store');;
     Route::post('/training/store', [App\Http\Controllers\TrainingController::class, 'store'])->name('lembur.store');;
@@ -29,7 +29,8 @@ Route::middleware('role:admin')->group(function () {
 
     Route::post('/data_pelamar/store', [App\Http\Controllers\DatapelamarController::class, 'store'])->name('datapelamar.store');;
     Route::put('/data_pelamar/update/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'update'])->name('datapelamar.update');;
-    Route::get('/data_pelamar/cetak_sk/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'cetakSK'])->name('datapelamar.cetak-sk');;
+    Route::get('/data_pelamar/input_sk/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'inputSK'])->name('datapelamar.input-sk');;
+    Route::post('/data_pelamar/cetak_sk/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'cetakSK'])->name('datapelamar.cetak-sk');;
     Route::get('/data_pelamar/ubah_status/{pelamar}', [App\Http\Controllers\DatapelamarController::class, 'ubahStatus'])->name('datapelamar.ubah-status');;
     
     Route::post('/penugasan/store', [App\Http\Controllers\PenugasanController::class, 'store'])->name('penugasan.store');; 
@@ -54,10 +55,13 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/hasil_interview/delete/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'delete'])->name('admin.hasil-interview.delete');
     Route::get('/admin_dashboard/hasil_interview/edit/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'edit'])->name('admin.hasil-interview.edit');
     Route::put('/admin_dashboard/hasil_interview/update/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'update'])->name('admin.hasil-interview.update');
+    
+    Route::get('/admin_dashboard/data_pegawai', [App\Http\Controllers\Admin\DataPegawaiController::class, 'index'])->name('admin.data-pegawai.index');
+    Route::get('/admin_dashboard/data_pegawai/edit/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'edit'])->name('admin.data-pegawai.edit');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
-    Route::get('/unitkerja_dashboard', [App\Http\Controllers\Unitkerja\DashboardController::class, 'index']);
+    Route::get('/unitkerja_dashboard', [App\Http\Controllers\Unitkerja\DashboardController::class, 'index'])->name('unitkerja.dashboard');
 
     Route::get('/unitkerja_dashboard/lowongan_kerja', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'index'])->name('unitkerja.lowongan-kerja.index');
     Route::get('/unitkerja_dashboard/lowongan_kerja/create', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'create'])->name('unitkerja.lowongan-kerja.create');
@@ -73,7 +77,7 @@ Route::middleware('role:pelamar')->group(function () {
 });
 
 Route::middleware('role:pimpinan')->group(function () {
-    Route::get('/pimpinan_dashboard', [App\Http\Controllers\Pimpinan\DashboardController::class, 'index']);
+    Route::get('/pimpinan_dashboard', [App\Http\Controllers\Pimpinan\DashboardController::class, 'index'])->name('pimpinan.dashboard');
     Route::get('/pimpinan_dashboard/data_pelamar', [App\Http\Controllers\Pimpinan\DataPelamarController::class, 'index'])->name('pimpinan.data-pelamar.index');
     Route::get('/pimpinan_dashboard/data_pelamar/{id}', [App\Http\Controllers\Pimpinan\DataPelamarController::class, 'detail'])->name('pimpinan.data-pelamar.detail');
     

@@ -4,6 +4,10 @@ use Illuminate\Http\Request;
 use App\Models\Datapelamar; 
 use App\Models\HasilInterview; 
 use App\Models\StatusPelamar; 
+use App\Models\KontrakPegawai; 
+use App\Models\DataPegawai; 
+use App\Models\KontrakUnitKerja; 
+use App\Models\DataUnitKerja; 
 use Illuminate\Support\Facades\DB;
 // namespace App\Http\Controllers; 
 // use Illuminate\Http\Request; 
@@ -300,8 +304,120 @@ class DatapelamarController extends Controller
    $dataUser->delete(); 
    } 
 
-   public function cetakSK($id){
+   public function cetakSK(Request $request, $id){
+
+      $this->validate($request, [ 
+         'jenis_pekerjaan' => 'required', 
+         'nip' => 'required', 
+         'no_ktp' => 'required', 
+         'alamat' => 'required', 
+         'jabatan' => 'required', 
+         'agama' => 'required', 
+         'email' => 'required|email|unique:users', 
+         'password' => 'required', 
+         'password_confirmation' => 'required|same:password', 
+         'foto_diri' => 'required', 
+         'pendidikan' => 'required', 
+         'tahun_kelulusan' => 'required', 
+         'lama_kontrak' => 'required', 
+      ]);
+
       $pelamar = Datapelamar::where('id', $id)->first();
+      
+      $enkripsi = Hash::make($request->password);
+
+      $user = new User();
+      $user->name = $pelamar->nama;
+      $user->email = $request->email;
+      $user->password = $enkripsi;
+      if($request->jenis_pekerjaan == 'Pegawai'){
+         $user->role = 'pegawai';
+      }
+      else if($request->jenis_pekerjaan == 'Unit Kerja'){
+         $user->role = 'unitkerja';
+      }
+      $user->save();
+
+      if($request->jenis_pekerjaan == 'Pegawai'){
+         $pegawai = new DataPegawai();
+         $pegawai->nip = $request->nip;
+         $pegawai->nama = $pelamar->nama;
+         $pegawai->alamat = $request->alamat;
+         $pegawai->tempat_lahir = $pelamar->tempat_lahir;
+         $pegawai->tanggal_lahir = $pelamar->tanggal_lahir;
+         $pegawai->no_ktp = $request->no_ktp;
+         $pegawai->jenis_kelamin = $pelamar->jenis_kelamin;
+         $pegawai->status = 1;
+         $pegawai->jabatan = $request->jabatan;
+         $pegawai->agama = $request->agama;
+         $pegawai->no_hp = $pelamar->no_hp;
+         $pegawai->email = $request->email;
+         $pegawai->tanggal_sk = date('Y-m-d');
+         $pegawai->pendidikan = $request->pendidikan;
+         $pegawai->tahun_kelulusan = $request->tahun_kelulusan;
+         $pegawai->id_user = $user->id;
+         $pegawai->id_pelamar = $pelamar->id;
+
+         if($request->foto_diri){
+            $namefile = 'diri_'. date("Y_m_d_H_i_s") .'.'.$request->foto_diri->extension();
+            $inputs['foto_diri'] = 'storage/pegawai/'.$user->id.'/'.$namefile;
+            request('foto_diri')->storeAs('pegawai/'.$user->id, $namefile, 'public');
+            $pegawai->foto_diri = $inputs['foto_diri'];
+         }
+
+         if($request->program_studi){
+            $pegawai->program_studi = $request->program_studi;
+         }
+
+         $pegawai->save();
+
+         $kontrakPegawai = new KontrakPegawai();
+         $kontrakPegawai->id_pegawai = $pegawai->id;
+         $kontrakPegawai->lama_kontrak = $request->lama_kontrak;
+         $kontrakPegawai->status = 1;
+         $kontrakPegawai->save();
+      }
+      else if($request->jenis_pekerjaan == 'Unit Kerja'){
+         $unitkerja = new DataUnitKerja();
+         $unitkerja->nip = $request->nip;
+         $unitkerja->nama = $pelamar->nama;
+         $unitkerja->alamat = $request->alamat;
+         $unitkerja->tempat_lahir = $pelamar->tempat_lahir;
+         $unitkerja->tanggal_lahir = $pelamar->tanggal_lahir;
+         $unitkerja->no_ktp = $request->no_ktp;
+         $unitkerja->jenis_kelamin = $pelamar->jenis_kelamin;
+         $unitkerja->status = 1;
+         $unitkerja->jabatan = $request->jabatan;
+         $unitkerja->agama = $request->agama;
+         $unitkerja->no_hp = $pelamar->no_hp;
+         $unitkerja->email = $request->email;
+         $unitkerja->tanggal_sk = date('Y-m-d');
+         $unitkerja->pendidikan = $request->pendidikan;
+         $unitkerja->tahun_kelulusan = $request->tahun_kelulusan;
+         $unitkerja->id_user = $user->id;
+         $unitkerja->id_pelamar = $pelamar->id;
+
+         if($request->foto_diri){
+            $namefile = 'diri_'. date("Y_m_d_H_i_s") .'.'.$request->foto_diri->extension();
+            $inputs['foto_diri'] = 'storage/unitkerja/'.$user->id.'/'.$namefile;
+            request('foto_diri')->storeAs('unitkerja/'.$user->id, $namefile, 'public');
+            $unitkerja->foto_diri = $inputs['foto_diri'];
+         }
+
+         if($request->program_studi){
+            $unitkerja->program_studi = $request->program_studi;
+         }
+
+         $unitkerja->save();
+
+         $kontrakUnitKerja = new KontrakUnitKerja();
+         $kontrakUnitKerja->id_unitkerja = $unitkerja->id;
+         $kontrakUnitKerja->lama_kontrak = $request->lama_kontrak;
+         $kontrakUnitKerja->status = 1;
+         $kontrakUnitKerja->save();
+      }
+
+      //cetak pdf
       $pdf = PDF::loadView('pdf/surat-keterangan-lulus', compact('pelamar'));
 
       $namefile = 'surat_keterangan_lulus_'. date("Y_m_d_H_i_s") .'.pdf';
@@ -315,5 +431,10 @@ class DatapelamarController extends Controller
          "success", 
          "Data berhasil disimpan." 
       ); 
+   }
+
+   public function inputSK($id){
+      $pelamar = Datapelamar::where('id', $id)->first();
+      return view('datapelamar.input-sk', compact('pelamar'));
    }
 } 

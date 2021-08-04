@@ -34,13 +34,16 @@ class LoginController extends Controller
           return '/admin_dashboard';
           break;
         case 'pegawai':
-          return '/pegawai_dashboard';
+          return '/admin_dashboard';
           break; 
         case 'pimpinan':
           return '/pimpinan_dashboard';
           break; 
         case 'unitkerja':
           return '/unitkerja_dashboard';
+          break;   
+        case 'pelamar':
+          return '/pelamar_dashboard/informasi_diri';
           break;   
 
 
