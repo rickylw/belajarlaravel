@@ -58,6 +58,17 @@ Route::middleware('role:admin')->group(function () {
     
     Route::get('/admin_dashboard/data_pegawai', [App\Http\Controllers\Admin\DataPegawaiController::class, 'index'])->name('admin.data-pegawai.index');
     Route::get('/admin_dashboard/data_pegawai/edit/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'edit'])->name('admin.data-pegawai.edit');
+    Route::put('/admin_dashboard/data_pegawai/update/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'update'])->name('admin.data-pegawai.update');
+    
+    Route::get('/admin_dashboard/kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'index'])->name('admin.kontrak-pegawai.index');
+    
+    Route::get('/admin_dashboard/kontrak_unitkerja', [App\Http\Controllers\Admin\KontrakUnitKerjaController::class, 'index'])->name('admin.kontrak-unitkerja.index');
+    
+    Route::get('/admin_dashboard/data_unitkerja', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'index'])->name('admin.data-unitkerja.index');
+    Route::get('/admin_dashboard/data_unitkerja/edit/{id}', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'edit'])->name('admin.data-unitkerja.edit');
+    Route::put('/admin_dashboard/data_unitkerja/update/{id}', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'update'])->name('admin.data-unitkerja.update');
+    
+    Route::get('/admin_dashboard/mutasi_pekerja', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'index'])->name('admin.data-unitkerja.index');
 });
 
 Route::middleware('role:unitkerja')->group(function () {

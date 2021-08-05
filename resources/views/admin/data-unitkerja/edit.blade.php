@@ -22,62 +22,62 @@
     </div>
 </div>
 <div class="card-body">
-<form class="form-horizontal" action="{{ route('admin.data-pegawai.update', $pegawai->id)}}" method="post" enctype="multipart/form-data"> @method('PUT')
+<form class="form-horizontal" action="{{ route('admin.data-unitkerja.update', $unitkerja->id)}}" method="post" enctype="multipart/form-data"> @method('PUT')
     {{ csrf_field() }}  
     
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Pekerjaan</label>
         <div class="col-sm-10">
-        <input type="text" name="jenis_pekerjaan" class="form-control" value="Pegawai" readonly>
+        <input type="text" name="jenis_pekerjaan" class="form-control" value="Unit Kerja" readonly>
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Tanggal SK</label>
         <div class="col-sm-10">
-        <input type="text" name="jenis_pekerjaan" class="form-control" value="{{ $pegawai->tanggal_sk ?? '' }}" readonly>
+        <input type="text" name="jenis_pekerjaan" class="form-control" value="{{ $unitkerja->tanggal_sk ?? '' }}" readonly>
         </div>
     </div>
     
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">NIP</label>
         <div class="col-sm-10">
-        <input type="text" name="nip" class="form-control" value="{{ $pegawai->nip ?? '' }}" >
+        <input type="text" name="nip" class="form-control" value="{{ $unitkerja->nip ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Nomor KTP</label>
         <div class="col-sm-10">
-        <input type="text" name="no_ktp" class="form-control" value="{{ $pegawai->no_ktp ?? '' }}" >
+        <input type="text" name="no_ktp" class="form-control" value="{{ $unitkerja->no_ktp ?? '' }}" >
         </div>
     </div>
     
     <div class="form-group">
         <label for="nip" class="col-sm-6 control-label">Lama Kontrak (Bulan)</label>
         <div class="col-sm-10">
-        <input type="number" name="lama_kontrak" class="form-control" value="{{ $pegawai->lama_kontrak ?? '' }}" >
+        <input type="number" name="lama_kontrak" class="form-control" value="{{ $unitkerja->lama_kontrak ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nama" class="col-sm-2 control-label">Nama</label>
         <div class="col-sm-10">
-        <input type="text" name="nama" class="form-control" value="{{ $pegawai->nama ?? '' }}">
+        <input type="text" name="nama" class="form-control" value="{{ $unitkerja->nama ?? '' }}">
         </div>
     </div>
 
     <div class="form-group">
         <label for="ttl" class="col-sm-2 control-label">Tempat Lahir</label>
         <div class="col-sm-10">
-        <input type="text" name="tempat_lahir" class="form-control" value="{{ $pegawai->tempat_lahir ?? '' }}" >
+        <input type="text" name="tempat_lahir" class="form-control" value="{{ $unitkerja->tempat_lahir ?? '' }}" >
         </div>
     </div>
     
     <div class="form-group">
         <label for="usia" class="col-sm-2 control-label">Tanggal Lahir</label>
         <div class="col-sm-10">
-        <input type="date" name="tanggal_lahir" class="form-control" value="{{ $pegawai->tanggal_lahir ?? '' }}" >
+        <input type="date" name="tanggal_lahir" class="form-control" value="{{ $unitkerja->tanggal_lahir ?? '' }}" >
         </div>
     </div>
 
@@ -86,8 +86,8 @@
         <div class="col-sm-10">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" id="btn-jenis-kelamin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @if (isset($pegawai))
-                    {{($pegawai->jenis_kelamin == 0) ? "Laki-Laki" : "Perempuan"}}
+                @if (isset($unitkerja))
+                    {{($unitkerja->jenis_kelamin == 0) ? "Laki-Laki" : "Perempuan"}}
                 @else
                     Jenis Kelamin
                 @endif
@@ -97,8 +97,8 @@
                 <a class="dropdown-item">Perempuan</a>
             </div>
             <input type="hidden" name="jenis_kelamin" id="jenis-kelamin" value="
-            @if (isset($pegawai->jenis_kelamin))
-                {{($pegawai->jenis_kelamin == 0) ? "Laki-Laki" : "Perempuan"}}
+            @if (isset($unitkerja->jenis_kelamin))
+                {{($unitkerja->jenis_kelamin == 0) ? "Laki-Laki" : "Perempuan"}}
             @else
                 Jenis Kelamin
             @endif
@@ -110,35 +110,35 @@
     <div class="form-group">
         <label for="alamat" class="col-sm-2 control-label">Alamat</label>
         <div class="col-sm-10">
-        <textarea type="text" name="alamat" class="form-control" rows="3"><?php echo $pegawai->alamat ?></textarea>
+        <textarea type="text" name="alamat" class="form-control" rows="3"><?php echo $unitkerja->alamat ?></textarea>
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Jabatan</label>
         <div class="col-sm-10">
-        <input type="text" name="jabatan" class="form-control" value="{{ $pegawai->jabatan ?? '' }}" >
+        <input type="text" name="jabatan" class="form-control" value="{{ $unitkerja->jabatan ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Agama</label>
         <div class="col-sm-10">
-        <input type="text" name="agama" class="form-control" value="{{ $pegawai->agama ?? '' }}" >
+        <input type="text" name="agama" class="form-control" value="{{ $unitkerja->agama ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-6 control-label">Nomor Handphone</label>
         <div class="col-sm-10">
-        <input type="text" name="no_hp" class="form-control" value="{{ $pegawai->no_hp ?? '' }}" >
+        <input type="text" name="no_hp" class="form-control" value="{{ $unitkerja->no_hp ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-6 control-label">Email</label>
         <div class="col-sm-10">
-        <input type="text" name="email" class="form-control" value="{{ $pegawai->email ?? '' }}" readonly>
+        <input type="text" name="email" class="form-control" value="{{ $unitkerja->email ?? '' }}" readonly>
         </div>
     </div>
 
@@ -159,9 +159,9 @@
     <div class="form-group">
     <label for="fc_kk" class="col-sm-4 control-label">Foto Diri</label>
         <div class="col-sm-10">
-        @if (isset($pegawai->foto_diri))
+        @if (isset($unitkerja->foto_diri))
             <div class="mb-4">
-                <img height="300px" src="{{asset($pegawai->foto_diri)}}" alt="">
+                <img height="300px" src="{{asset($unitkerja->foto_diri)}}" alt="">
             </div>
         @endif
         <input type="file" name="foto_diri" class="form-control-file">
@@ -171,28 +171,28 @@
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Pendidikan</label>
         <div class="col-sm-10">
-        <input type="text" name="pendidikan" class="form-control" value="{{ $pegawai->pendidikan ?? '' }}" >
+        <input type="text" name="pendidikan" class="form-control" value="{{ $unitkerja->pendidikan ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-6 control-label">Program Studi (tidak wajib)</label>
         <div class="col-sm-10">
-        <input type="text" name="program_studi" class="form-control" value="{{ $pegawai->program_studi ?? '' }}" >
+        <input type="text" name="program_studi" class="form-control" value="{{ $unitkerja->program_studi ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Tahun Kelulusan</label>
         <div class="col-sm-10">
-        <input type="number" name="tahun_kelulusan" class="form-control" value="{{ $pegawai->tahun_kelulusan ?? '' }}" >
+        <input type="number" name="tahun_kelulusan" class="form-control" value="{{ $unitkerja->tahun_kelulusan ?? '' }}" >
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
-        <a href="{{ route('admin.data-pegawai.index') }}" class="btn btn-primary" role="button">Batal</a>
+        <a href="{{ route('admin.data-unitkerja.index') }}" class="btn btn-primary" role="button">Batal</a>
         </div>
     </div>
 </form>

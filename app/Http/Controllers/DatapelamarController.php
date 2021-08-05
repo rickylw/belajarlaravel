@@ -431,6 +431,8 @@ class DatapelamarController extends Controller
          "success", 
          "Data berhasil disimpan." 
       ); 
+
+      //cetak kontrak kerja
    }
 
    public function inputSK($id){
