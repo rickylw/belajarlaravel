@@ -89,12 +89,45 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/data_pelamar" class="nav-link">
+                <a href="{{route('admin.kontrak-pegawai.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kontrak Pegawai</p>
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item menu">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Unit Kerja
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('admin.data-unitkerja.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Data Unit Kerja
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.kontrak-unitkerja.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kontrak Pegawai</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="/pensiun" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Mutasi Pekerja
+              </p>
+            </a>
           </li>
           <li class="nav-item">
             <a href="/pensiun" class="nav-link">
