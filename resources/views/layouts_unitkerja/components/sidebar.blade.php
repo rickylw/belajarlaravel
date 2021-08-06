@@ -42,13 +42,30 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-columns"></i>
+          <li class="nav-item menu">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Training
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('unitkerja.training-pegawai.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+                    Pegawai
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('unitkerja.training-unitkerja.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Unit Kerja</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{{route('unitkerja.lowongan-kerja.index')}}" class="nav-link">

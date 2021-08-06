@@ -56,6 +56,14 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/hasil_interview/edit/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'edit'])->name('admin.hasil-interview.edit');
     Route::put('/admin_dashboard/hasil_interview/update/{id}', [App\Http\Controllers\Admin\HasilInterviewController::class, 'update'])->name('admin.hasil-interview.update');
     
+    Route::get('/admin_dashboard/training_pegawai', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'index'])->name('admin.training-pegawai.index');
+    Route::get('/admin_dashboard/training_pegawai/detail/{id}', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'detail'])->name('admin.training-pegawai.detail');
+    Route::get('/admin_dashboard/training_pegawai/forward/{id}', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'forward'])->name('admin.training-pegawai.forward');
+    
+    Route::get('/admin_dashboard/training_unitkerja', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'index'])->name('admin.training-unitkerja.index');
+    Route::get('/admin_dashboard/training_unitkerja/detail/{id}', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'detail'])->name('admin.training-unitkerja.detail');
+    Route::get('/admin_dashboard/training_unitkerja/forward/{id}', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'forward'])->name('admin.training-unitkerja.forward');
+    
     Route::get('/admin_dashboard/data_pegawai', [App\Http\Controllers\Admin\DataPegawaiController::class, 'index'])->name('admin.data-pegawai.index');
     Route::get('/admin_dashboard/data_pegawai/edit/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'edit'])->name('admin.data-pegawai.edit');
     Route::put('/admin_dashboard/data_pegawai/update/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'update'])->name('admin.data-pegawai.update');
@@ -80,6 +88,20 @@ Route::middleware('role:unitkerja')->group(function () {
     Route::get('/unitkerja_dashboard/lowongan_kerja/delete/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'delete'])->name('unitkerja.lowongan-kerja.delete');
     Route::get('/unitkerja_dashboard/lowongan_kerja/edit/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'edit'])->name('unitkerja.lowongan-kerja.edit');
     Route::put('/unitkerja_dashboard/lowongan_kerja/update/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'update'])->name('unitkerja.lowongan-kerja.update');
+    
+    Route::get('/unitkerja_dashboard/training_pegawai', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'index'])->name('unitkerja.training-pegawai.index');
+    Route::get('/unitkerja_dashboard/training_pegawai/create', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'create'])->name('unitkerja.training-pegawai.create');
+    Route::post('/unitkerja_dashboard/training_pegawai/store', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'store'])->name('unitkerja.training-pegawai.store');
+    Route::get('/unitkerja_dashboard/training_pegawai/delete/{id}', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'delete'])->name('unitkerja.training-pegawai.delete');
+    Route::get('/unitkerja_dashboard/training_pegawai/edit/{id}', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'edit'])->name('unitkerja.training-pegawai.edit');
+    Route::put('/unitkerja_dashboard/training_pegawai/update/{id}', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'update'])->name('unitkerja.training-pegawai.update');
+    
+    Route::get('/unitkerja_dashboard/training_unitkerja', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'index'])->name('unitkerja.training-unitkerja.index');
+    Route::get('/unitkerja_dashboard/training_unitkerja/create', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'create'])->name('unitkerja.training-unitkerja.create');
+    Route::post('/unitkerja_dashboard/training_unitkerja/store', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'store'])->name('unitkerja.training-unitkerja.store');
+    Route::get('/unitkerja_dashboard/training_unitkerja/delete/{id}', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'delete'])->name('unitkerja.training-unitkerja.delete');
+    Route::get('/unitkerja_dashboard/training_unitkerja/edit/{id}', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'edit'])->name('unitkerja.training-unitkerja.edit');
+    Route::put('/unitkerja_dashboard/training_unitkerja/update/{id}', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'update'])->name('unitkerja.training-unitkerja.update');
 });
 
 Route::middleware('role:pelamar')->group(function () {
@@ -95,6 +117,9 @@ Route::middleware('role:pimpinan')->group(function () {
     Route::get('/pimpinan_dashboard/hasil_interview', [App\Http\Controllers\Pimpinan\HasilInterviewController::class, 'index'])->name('pimpinan.hasil-interview.index');
     Route::get('/pimpinan_dashboard/hasil_interview/{id}', [App\Http\Controllers\Pimpinan\HasilInterviewController::class, 'detail'])->name('pimpinan.hasil-interview.detail');
     Route::get('/pimpinan_dashboard/hasil_interview/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\HasilInterviewController::class, 'submit'])->name('pimpinan.hasil-interview.submit');
+    
+    Route::get('/pimpinan_dashboard/training_pegawai', [App\Http\Controllers\Pimpinan\TrainingPegawaiController::class, 'index'])->name('pimpinan.training-pegawai.index');
+    Route::get('/pimpinan_dashboard/training_pegawai/detail/{id}', [App\Http\Controllers\Pimpinan\TrainingPegawaiController::class, 'detail'])->name('pimpinan.training-pegawai.detail');
 });
 
 Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;
