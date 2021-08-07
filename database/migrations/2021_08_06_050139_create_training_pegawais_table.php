@@ -19,6 +19,7 @@ class CreateTrainingPegawaisTable extends Migration
             $table->dateTime('jadwal_mulai_pelatihan');
             $table->dateTime('jadwal_akhir_pelatihan');
             $table->string('nama_pelatihan');
+            $table->text('surat_izin_pelatihan')->nullable();
             $table->longText('deskripsi_pelatihan')->collation('utf8mb4_general_ci');
             $table->dateTime('diketahui_sdm')->nullable();
             $table->dateTime('diketahui_pimpinan')->nullable();

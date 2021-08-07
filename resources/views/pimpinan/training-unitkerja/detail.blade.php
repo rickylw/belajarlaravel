@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts_pimpinan.master')
 
 @section('content')
 <div class="container">
@@ -9,13 +9,6 @@
             <div class="card-header">
                 <div class="row justify-content-between">
                     <h4 class="my-auto">{{$trainingUnitKerja->nama_pelatihan}}</h4>
-                    @if (!isset($trainingUnitKerja->diketahui_sdm))
-                        <a href="{{route('admin.training-unitkerja.forward', $trainingUnitKerja->id)}}" class="btn btn-primary">Teruskan Ke Pimpinan</a>
-                    @endif
-                    
-                    @if ($trainingUnitKerja->status == 1)
-                        <a href="{{(isset($trainingUnitKerja->surat_izin_pelatihan) ? asset($trainingUnitKerja->surat_izin_pelatihan) : route('admin.training-unitkerja.cetak-sip', $trainingUnitKerja->id))}}" class="btn btn-success ml-4">Cetak SK</a>
-                    @endif
                 </div>
             </a>
         </div>
@@ -50,6 +43,20 @@
             <div class="row">
                 <p class="text-muted col-xl-3 my-auto"><b>Diajukan Oleh</b></p>
                 <p class="col-xl-9 my-auto">{{$trainingUnitKerja->nama_diajukan_oleh}}</p>                  
+            </div>
+            <hr class="my-2" />
+            
+            <div class="row">
+                <div>
+                    <a class="btn btn-success" href="{{ route('pimpinan.training-unitkerja.submit', [$trainingUnitKerja->id, 1]) }}">Setuju
+                    <i class="fas fa-check"></i>
+                    </a>
+                </div>
+                <div class="ml-3">
+                    <a class="btn btn-danger" href="{{ route('pimpinan.training-unitkerja.submit', [$trainingUnitKerja->id, 2]) }}">Tolak
+                    <i class="fas fa-times"></i>
+                    </a>
+                </div>
             </div>
             <hr class="my-2" />
           </div>

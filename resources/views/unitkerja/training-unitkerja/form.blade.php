@@ -1,5 +1,33 @@
 {{ csrf_field() }}
 
+
+@if (isset($trainingUnitKerja->diketahui_sdm))
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 control-label">Diketahui SDM</label>
+        <div class="col-sm-10">
+        <p><?php echo date('Y-m-d, H:i', strtotime($trainingUnitKerja->diketahui_sdm)) ?></p>
+        </div>
+    </div>
+@endif
+
+@if (isset($trainingUnitKerja->diketahui_pimpinan))
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 control-label">Diketahui Pimpinan</label>
+        <div class="col-sm-10">
+        <p><?php echo date('Y-m-d, H:i', strtotime($trainingUnitKerja->diketahui_pimpinan)) ?></p>
+        </div>
+    </div>
+@endif
+
+@if (isset($trainingUnitKerja->surat_izin_pelatihan))
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 control-label">Surat Izin Pelatihan</label>
+        <div class="col-sm-10">
+        <a href="{{asset($trainingUnitKerja->surat_izin_pelatihan)}}"><?php echo explode('/', $trainingUnitKerja->surat_izin_pelatihan)[2] ?></a>
+        </div>
+    </div>
+@endif
+
 <div class="form-group">
 <label for="nama" class="col-sm-2 control-label">Unit Kerja</label>
 <div class="col-sm-10">

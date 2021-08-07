@@ -24,6 +24,6 @@ class DashboardController extends Controller
 
       $hasilInterview = HasilInterview::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 1)->first();
       $hasilKontrakPegawai = HasilInterview::where('id_pelamar', $datapelamar->id)->where('id_jenis_interview', 2)->first();
-      return view('pelamar.jadwal-tes', compact('jadwalTesInterview', 'jadwalTesKontrakPegawai', 'hasilInterview', 'hasilKontrakPegawai'));
+      return view('pelamar.jadwal-tes', compact('jadwalTesInterview', 'jadwalTesKontrakPegawai', 'hasilInterview', 'hasilKontrakPegawai', 'datapelamar'));
     }
 }

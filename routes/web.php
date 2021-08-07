@@ -59,10 +59,12 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/training_pegawai', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'index'])->name('admin.training-pegawai.index');
     Route::get('/admin_dashboard/training_pegawai/detail/{id}', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'detail'])->name('admin.training-pegawai.detail');
     Route::get('/admin_dashboard/training_pegawai/forward/{id}', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'forward'])->name('admin.training-pegawai.forward');
+    Route::get('/admin_dashboard/training_pegawai/cetakSIP/{id}', [App\Http\Controllers\Admin\TrainingPegawaiController::class, 'cetakSIP'])->name('admin.training-pegawai.cetak-sip');
     
     Route::get('/admin_dashboard/training_unitkerja', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'index'])->name('admin.training-unitkerja.index');
     Route::get('/admin_dashboard/training_unitkerja/detail/{id}', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'detail'])->name('admin.training-unitkerja.detail');
     Route::get('/admin_dashboard/training_unitkerja/forward/{id}', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'forward'])->name('admin.training-unitkerja.forward');
+    Route::get('/admin_dashboard/training_unitkerja/cetakSIP/{id}', [App\Http\Controllers\Admin\TrainingUnitKerjaController::class, 'cetakSIP'])->name('admin.training-unitkerja.cetak-sip');
     
     Route::get('/admin_dashboard/data_pegawai', [App\Http\Controllers\Admin\DataPegawaiController::class, 'index'])->name('admin.data-pegawai.index');
     Route::get('/admin_dashboard/data_pegawai/edit/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'edit'])->name('admin.data-pegawai.edit');
@@ -120,6 +122,11 @@ Route::middleware('role:pimpinan')->group(function () {
     
     Route::get('/pimpinan_dashboard/training_pegawai', [App\Http\Controllers\Pimpinan\TrainingPegawaiController::class, 'index'])->name('pimpinan.training-pegawai.index');
     Route::get('/pimpinan_dashboard/training_pegawai/detail/{id}', [App\Http\Controllers\Pimpinan\TrainingPegawaiController::class, 'detail'])->name('pimpinan.training-pegawai.detail');
+    Route::get('/pimpinan_dashboard/training_pegawai/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\TrainingPegawaiController::class, 'submit'])->name('pimpinan.training-pegawai.submit');
+    
+    Route::get('/pimpinan_dashboard/training_unitkerja', [App\Http\Controllers\Pimpinan\TrainingUnitKerjaController::class, 'index'])->name('pimpinan.training-unitkerja.index');
+    Route::get('/pimpinan_dashboard/training_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\TrainingUnitKerjaController::class, 'detail'])->name('pimpinan.training-unitkerja.detail');
+    Route::get('/pimpinan_dashboard/training_unitkerja/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\TrainingUnitKerjaController::class, 'submit'])->name('pimpinan.training-unitkerja.submit');
 });
 
 Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;

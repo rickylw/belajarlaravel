@@ -17,6 +17,7 @@ class TrainingPegawai extends Model
         "diketahui_sdm",
         "diketahui_pimpinan",
         "status",
-        "diajukan_oleh"
+        "diajukan_oleh",
+        "surat_izin_pelatihan"
     ]; 
 }
