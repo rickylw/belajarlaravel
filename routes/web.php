@@ -78,6 +78,8 @@ Route::middleware('role:admin')->group(function () {
     Route::put('/admin_dashboard/data_unitkerja/update/{id}', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'update'])->name('admin.data-unitkerja.update');
     
     Route::get('/admin_dashboard/mutasi_pegawai', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'index'])->name('admin.mutasi-pegawai.index');
+    Route::get('/admin_dashboard/mutasi_pegawai/create', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'create'])->name('admin.mutasi-pegawai.create');
+    Route::post('/admin_dashboard/mutasi_pegawai/store', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'store'])->name('admin.mutasi-pegawai.store');
     
     Route::get('/admin_dashboard/pesan/create', [App\Http\Controllers\Admin\PesanController::class, 'create'])->name('admin.pesan.create');
     Route::post('/admin_dashboard/pesan/store', [App\Http\Controllers\Admin\PesanController::class, 'store'])->name('admin.pesan.store');

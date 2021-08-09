@@ -7,7 +7,8 @@
         
         <div class="card">
             <div class="card-header">
-                <p class="my-auto">Data Mutasi Pegawai</p>
+                <a class="btn btn-primary btn-md" href="{{ route('admin.mutasi-pegawai.create') }}">
+                <i class="fa fa-plus"></i> Mutasi
             </a>
         </div>
         

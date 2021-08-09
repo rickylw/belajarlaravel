@@ -13,7 +13,7 @@ class CreateMutasiUnitKerjasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_mutasi_unikerja', function (Blueprint $table) {
+        Schema::create('tbl_mutasi_unitkerja', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_unitkerja')->unsigned();
             $table->string('pekerjaan_awal');
