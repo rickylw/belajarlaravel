@@ -16,7 +16,6 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('daftarakun', App\Http\Controllers\DaftarakunController::class); 
     Route::resource('data_pelamar', App\Http\Controllers\DatapelamarController::class); 
     Route::resource('lembur', App\Http\Controllers\LemburController::class);
-    Route::resource('training', App\Http\Controllers\TrainingController::class);
     Route::resource('penugasan', App\Http\Controllers\PenugasanController::class);
     Route::resource('resign', App\Http\Controllers\ResignController::class);
     Route::resource('datapegawai', App\Http\Controllers\DatapegawaiController::class);
@@ -78,7 +77,14 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/data_unitkerja/edit/{id}', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'edit'])->name('admin.data-unitkerja.edit');
     Route::put('/admin_dashboard/data_unitkerja/update/{id}', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'update'])->name('admin.data-unitkerja.update');
     
-    Route::get('/admin_dashboard/mutasi_pekerja', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'index'])->name('admin.data-unitkerja.index');
+    Route::get('/admin_dashboard/mutasi_pegawai', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'index'])->name('admin.mutasi-pegawai.index');
+    
+    Route::get('/admin_dashboard/pesan/create', [App\Http\Controllers\Admin\PesanController::class, 'create'])->name('admin.pesan.create');
+    Route::post('/admin_dashboard/pesan/store', [App\Http\Controllers\Admin\PesanController::class, 'store'])->name('admin.pesan.store');
+    Route::get('/admin_dashboard/pesan_keluar', [App\Http\Controllers\Admin\PesanController::class, 'pesanKeluar'])->name('admin.pesan-keluar.index');
+    Route::get('/admin_dashboard/pesan_keluar/detail/{id}', [App\Http\Controllers\Admin\PesanController::class, 'detailPesanKeluar'])->name('admin.pesan-keluar.detail');
+    Route::get('/admin_dashboard/pesan_masuk', [App\Http\Controllers\Admin\PesanController::class, 'pesanMasuk'])->name('admin.pesan-masuk.index');
+    Route::get('/admin_dashboard/pesan_masuk/detail/{id}', [App\Http\Controllers\Admin\PesanController::class, 'detailPesanMasuk'])->name('admin.pesan-masuk.detail');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
@@ -127,6 +133,13 @@ Route::middleware('role:pimpinan')->group(function () {
     Route::get('/pimpinan_dashboard/training_unitkerja', [App\Http\Controllers\Pimpinan\TrainingUnitKerjaController::class, 'index'])->name('pimpinan.training-unitkerja.index');
     Route::get('/pimpinan_dashboard/training_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\TrainingUnitKerjaController::class, 'detail'])->name('pimpinan.training-unitkerja.detail');
     Route::get('/pimpinan_dashboard/training_unitkerja/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\TrainingUnitKerjaController::class, 'submit'])->name('pimpinan.training-unitkerja.submit');
+    
+    Route::get('/pimpinan_dashboard/pesan_keluar', [App\Http\Controllers\Pimpinan\PesanController::class, 'pesanKeluar'])->name('pimpinan.pesan-keluar.index');
+    Route::get('/pimpinan_dashboard/pesan_keluar/detail/{id}', [App\Http\Controllers\Pimpinan\PesanController::class, 'detailPesanKeluar'])->name('pimpinan.pesan-keluar.detail');
+    Route::get('/pimpinan_dashboard/pesan_masuk', [App\Http\Controllers\Pimpinan\PesanController::class, 'pesanMasuk'])->name('pimpinan.pesan-masuk.index');
+    Route::get('/pimpinan_dashboard/pesan_masuk/detail/{id}', [App\Http\Controllers\Pimpinan\PesanController::class, 'detailPesanMasuk'])->name('pimpinan.pesan-masuk.detail');
+    Route::get('/pimpinan_dashboard/pesan/create', [App\Http\Controllers\Pimpinan\PesanController::class, 'create'])->name('pimpinan.pesan.create');
+    Route::post('/pimpinan_dashboard/pesan/store', [App\Http\Controllers\Pimpinan\PesanController::class, 'store'])->name('pimpinan.pesan.store');
 });
 
 Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;

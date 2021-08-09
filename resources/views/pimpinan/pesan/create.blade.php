@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts_pimpinan.master')
 
 @section('content')
 <div class="row">
@@ -15,12 +15,12 @@
         
         
         <div class="card">
-        <div class="card-header"> Tambah Data Training
+        <div class="card-header"> Buat Pesan
         </div>
         
         <div class="card-body">
-        <form class="form-horizontal" action="{{ route('training.store') }}" method="post"> 
-            @include('training.form')
+        <form class="form-horizontal" action="{{ route('pimpinan.pesan.store') }}" method="post" enctype="multipart/form-data"> 
+            @include('pimpinan.pesan.form')
         </form>
         </div>
         
@@ -28,4 +28,14 @@
         
         </div>
         </div>
+@endsection
+
+@section('contentjs')
+<script src="{{asset('assets/dist/js/pages/pimpinan/pesan.js')}}"></script>
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor' );
+</script>
+    
 @endsection
