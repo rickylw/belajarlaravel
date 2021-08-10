@@ -7,7 +7,7 @@
         
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary btn-md" href="{{ route('admin.mutasi-pegawai.create') }}">
+                <a class="btn btn-primary btn-md" href="{{ route('admin.mutasi-unitkerja.create') }}">
                 <i class="fa fa-plus"></i> Mutasi
             </a>
         </div>
@@ -30,10 +30,10 @@
                 <tbody>
                 <?php $no=1;?>
                 
-                @forelse($mutasiPegawai as $item)
+                @forelse($mutasiUnitKerja as $item)
                     <tr>
                         <td>{{ $no }}</td>
-                        <td>{{ $item->nama_pegawai }}</td>
+                        <td>{{ $item->nama_unitkerja }}</td>
                         <td>{{ $item->pekerjaan_awal }}</td>
                         <td>{{ $item->pekerjaan_tujuan }}</td>
                         <td>{{ $item->jabatan_awal }}</td>
@@ -42,7 +42,7 @@
                         
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{{ route('admin.mutasi-pegawai.detail', $item->id) }}">
+                                <a class="btn btn-primary" href="{{ route('admin.mutasi-unitkerja.detail', $item->id) }}">
                                 Detail
                                 </a>
                             </div>

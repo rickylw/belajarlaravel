@@ -195,7 +195,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('admin.training-unitkerja.index')}}" class="nav-link">
+                <a href="{{route('admin.mutasi-unitkerja.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Unit Kerja</p>
                 </a>

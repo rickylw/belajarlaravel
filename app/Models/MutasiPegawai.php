@@ -15,6 +15,7 @@ class MutasiPegawai extends Model
         "pekerjaan_tujuan",
         "jabatan_tujuan",
         "deskripsi",
-        "dimutasi_oleh"
+        "dimutasi_oleh",
+        "surat_keterangan_pindah_unit"
     ]; 
 }

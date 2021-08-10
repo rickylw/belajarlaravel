@@ -21,6 +21,7 @@ class CreateMutasiUnitKerjasTable extends Migration
             $table->string('pekerjaan_tujuan');
             $table->string('jabatan_tujuan');
             $table->string('deskripsi')->collation('utf8mb4_general_ci');
+            $table->text('surat_keterangan_pindah_unit')->nullable();
             $table->bigInteger('dimutasi_oleh')->unsigned();
             $table->foreign('id_unitkerja')->references('id')->on('tbl_dataunitkerja'); 
             $table->foreign('dimutasi_oleh')->references('id')->on('users'); 

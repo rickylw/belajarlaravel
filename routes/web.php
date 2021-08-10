@@ -19,7 +19,6 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('penugasan', App\Http\Controllers\PenugasanController::class);
     Route::resource('resign', App\Http\Controllers\ResignController::class);
     Route::resource('datapegawai', App\Http\Controllers\DatapegawaiController::class);
-    Route::resource('mutasipegawai', App\Http\Controllers\MutasipegawaiController::class);
     Route::get('/admin_dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/data_pengajuan/store', [App\Http\Controllers\DatapengajuanController::class, 'store'])->name('datapengajuan.store');;
     Route::post('/lembur/store', [App\Http\Controllers\LemburController::class, 'store'])->name('lembur.store');;
@@ -80,6 +79,12 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/mutasi_pegawai', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'index'])->name('admin.mutasi-pegawai.index');
     Route::get('/admin_dashboard/mutasi_pegawai/create', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'create'])->name('admin.mutasi-pegawai.create');
     Route::post('/admin_dashboard/mutasi_pegawai/store', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'store'])->name('admin.mutasi-pegawai.store');
+    Route::get('/admin_dashboard/mutasi_pegawai/detail/{id}', [App\Http\Controllers\Admin\MutasipegawaiController::class, 'detail'])->name('admin.mutasi-pegawai.detail');
+    
+    Route::get('/admin_dashboard/mutasi_unitkerja', [App\Http\Controllers\Admin\MutasiUnitKerjaController::class, 'index'])->name('admin.mutasi-unitkerja.index');
+    Route::get('/admin_dashboard/mutasi_unitkerja/create', [App\Http\Controllers\Admin\MutasiUnitKerjaController::class, 'create'])->name('admin.mutasi-unitkerja.create');
+    Route::post('/admin_dashboard/mutasi_unitkerja/store', [App\Http\Controllers\Admin\MutasiUnitKerjaController::class, 'store'])->name('admin.mutasi-unitkerja.store');
+    Route::get('/admin_dashboard/mutasi_unitkerja/detail/{id}', [App\Http\Controllers\Admin\MutasiUnitKerjaController::class, 'detail'])->name('admin.mutasi-unitkerja.detail');
     
     Route::get('/admin_dashboard/pesan/create', [App\Http\Controllers\Admin\PesanController::class, 'create'])->name('admin.pesan.create');
     Route::post('/admin_dashboard/pesan/store', [App\Http\Controllers\Admin\PesanController::class, 'store'])->name('admin.pesan.store');
