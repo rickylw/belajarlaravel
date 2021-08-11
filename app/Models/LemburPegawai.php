@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class LemburPegawai extends Model
 {
-    use HasFactory;
+    protected $table = 'tbl_lembur_pegawai';
+    protected $fillable = [ 
+        "id_pegawai",
+        "jadwal_mulai_lembur",
+        "jadwal_selesai_lembur",
+        "surat_keterangan_lembur",
+        "status",
+        "diacc_oleh",
+        "deskripsi"
+    ]; 
 }

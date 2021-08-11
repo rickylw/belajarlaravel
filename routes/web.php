@@ -15,7 +15,6 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('data_pengajuan', App\Http\Controllers\DatapengajuanController::class); 
     Route::resource('daftarakun', App\Http\Controllers\DaftarakunController::class); 
     Route::resource('data_pelamar', App\Http\Controllers\DatapelamarController::class); 
-    Route::resource('lembur', App\Http\Controllers\LemburController::class);
     Route::resource('penugasan', App\Http\Controllers\PenugasanController::class);
     Route::resource('resign', App\Http\Controllers\ResignController::class);
     Route::resource('datapegawai', App\Http\Controllers\DatapegawaiController::class);
@@ -86,6 +85,14 @@ Route::middleware('role:admin')->group(function () {
     Route::post('/admin_dashboard/mutasi_unitkerja/store', [App\Http\Controllers\Admin\MutasiUnitKerjaController::class, 'store'])->name('admin.mutasi-unitkerja.store');
     Route::get('/admin_dashboard/mutasi_unitkerja/detail/{id}', [App\Http\Controllers\Admin\MutasiUnitKerjaController::class, 'detail'])->name('admin.mutasi-unitkerja.detail');
     
+    Route::get('/admin_dashboard/lembur_pegawai', [App\Http\Controllers\Admin\LemburPegawaiController::class, 'index'])->name('admin.lembur-pegawai.index');
+    Route::get('/admin_dashboard/lembur_pegawai/detail/{id}', [App\Http\Controllers\Admin\LemburPegawaiController::class, 'detail'])->name('admin.lembur-pegawai.detail');
+    Route::get('/admin_dashboard/lembur_pegawai/submit/{id}/{status}', [App\Http\Controllers\Admin\LemburPegawaiController::class, 'submit'])->name('admin.lembur-pegawai.submit');
+    
+    Route::get('/admin_dashboard/lembur_unitkerja', [App\Http\Controllers\Admin\LemburUnitKerjaController::class, 'index'])->name('admin.lembur-unitkerja.index');
+    Route::get('/admin_dashboard/lembur_unitkerja/detail/{id}', [App\Http\Controllers\Admin\LemburUnitKerjaController::class, 'detail'])->name('admin.lembur-unitkerja.detail');
+    Route::get('/admin_dashboard/lembur_unitkerja/submit/{id}/{status}', [App\Http\Controllers\Admin\LemburUnitKerjaController::class, 'submit'])->name('admin.lembur-unitkerja.submit');
+    
     Route::get('/admin_dashboard/pesan/create', [App\Http\Controllers\Admin\PesanController::class, 'create'])->name('admin.pesan.create');
     Route::post('/admin_dashboard/pesan/store', [App\Http\Controllers\Admin\PesanController::class, 'store'])->name('admin.pesan.store');
     Route::get('/admin_dashboard/pesan_keluar', [App\Http\Controllers\Admin\PesanController::class, 'pesanKeluar'])->name('admin.pesan-keluar.index');
@@ -103,6 +110,13 @@ Route::middleware('role:unitkerja')->group(function () {
     Route::get('/unitkerja_dashboard/lowongan_kerja/delete/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'delete'])->name('unitkerja.lowongan-kerja.delete');
     Route::get('/unitkerja_dashboard/lowongan_kerja/edit/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'edit'])->name('unitkerja.lowongan-kerja.edit');
     Route::put('/unitkerja_dashboard/lowongan_kerja/update/{id}', [App\Http\Controllers\Unitkerja\LowonganKerjaController::class, 'update'])->name('unitkerja.lowongan-kerja.update');
+    
+    Route::get('/unitkerja_dashboard/lembur', [App\Http\Controllers\Unitkerja\LemburController::class, 'index'])->name('unitkerja.lembur.index');
+    Route::get('/unitkerja_dashboard/lembur/create', [App\Http\Controllers\Unitkerja\LemburController::class, 'create'])->name('unitkerja.lembur.create');
+    Route::post('/unitkerja_dashboard/lembur/store', [App\Http\Controllers\Unitkerja\LemburController::class, 'store'])->name('unitkerja.lembur.store');
+    Route::get('/unitkerja_dashboard/lembur/delete/{id}', [App\Http\Controllers\Unitkerja\LemburController::class, 'delete'])->name('unitkerja.lembur.delete');
+    Route::get('/unitkerja_dashboard/lembur/edit/{id}', [App\Http\Controllers\Unitkerja\LemburController::class, 'edit'])->name('unitkerja.lembur.edit');
+    Route::put('/unitkerja_dashboard/lembur/update/{id}', [App\Http\Controllers\Unitkerja\LemburController::class, 'update'])->name('unitkerja.lembur.update');
     
     Route::get('/unitkerja_dashboard/training_pegawai', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'index'])->name('unitkerja.training-pegawai.index');
     Route::get('/unitkerja_dashboard/training_pegawai/create', [App\Http\Controllers\Unitkerja\TrainingPegawaiController::class, 'create'])->name('unitkerja.training-pegawai.create');
@@ -149,12 +163,13 @@ Route::middleware('role:pimpinan')->group(function () {
     Route::post('/pimpinan_dashboard/pesan/store', [App\Http\Controllers\Pimpinan\PesanController::class, 'store'])->name('pimpinan.pesan.store');
 });
 
-Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->middleware('role:pegawai');;
-
-Route::get('/hai', function () {
-    return view('halo');
-});
-
-Route::get('/halo', function () {
-    return view('halo');
+Route::middleware('role:pegawai')->group(function () {
+    Route::get('/pegawai_dashboard', [App\Http\Controllers\Pegawai\DashboardController::class, 'index'])->name('pegawai.dashboard');
+    
+    Route::get('/pegawai_dashboard/lembur', [App\Http\Controllers\Pegawai\LemburController::class, 'index'])->name('pegawai.lembur.index');
+    Route::get('/pegawai_dashboard/lembur/create', [App\Http\Controllers\Pegawai\LemburController::class, 'create'])->name('pegawai.lembur.create');
+    Route::post('/pegawai_dashboard/lembur/store', [App\Http\Controllers\Pegawai\LemburController::class, 'store'])->name('pegawai.lembur.store');
+    Route::get('/pegawai_dashboard/lembur/delete/{id}', [App\Http\Controllers\Pegawai\LemburController::class, 'delete'])->name('pegawai.lembur.delete');
+    Route::get('/pegawai_dashboard/lembur/edit/{id}', [App\Http\Controllers\Pegawai\LemburController::class, 'edit'])->name('pegawai.lembur.edit');
+    Route::put('/pegawai_dashboard/lembur/update/{id}', [App\Http\Controllers\Pegawai\LemburController::class, 'update'])->name('pegawai.lembur.update');
 });

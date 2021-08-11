@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts_pegawai.master')
 
 @section('content')
 <div class="row">
@@ -15,12 +15,12 @@
         
         
         <div class="card">
-        <div class="card-header"> Tambah Data Lembur
+        <div class="card-header"> Tambah Pengajuan Lembur
         </div>
         
         <div class="card-body">
-        <form class="form-horizontal" action="{{ route('lembur.store') }}" method="post"> 
-            @include('lembur.form')
+        <form class="form-horizontal" action="{{ route('pegawai.lembur.store') }}" method="post" enctype="multipart/form-data"> 
+            @include('pegawai.lembur.form')
         </form>
         </div>
         
@@ -28,4 +28,14 @@
         
         </div>
         </div>
+@endsection
+
+@section('contentjs')
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor' );
+</script>
+<script src="{{asset('assets/dist/js/pages/pegawai/time.js')}}"></script>
+    
 @endsection
