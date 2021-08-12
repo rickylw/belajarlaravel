@@ -42,6 +42,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('unitkerja.resign.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Resign
+              </p>
+            </a>
+          </li>
           <li class="nav-item menu">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>

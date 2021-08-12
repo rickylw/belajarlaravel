@@ -18,10 +18,9 @@
                         <th style="width: 5%">#</th>
                         <th style="width: 15%">NIP</th>
                         <th style="width: 25%">Nama</th>
-                        <th style="width: 10%">Lama Kontrak</th>
-                        <th style="width: 10%">Status Kontrak</th>
-                        <th style="width: 20%">Tanggal Pembuatan Kontrak</th>
-                        <th style="width: 15%">Aksi</th>
+                        <th style="width: 15%">Lama Kontrak</th>
+                        <th style="width: 15%">Status Kontrak</th>
+                        <th style="width: 25%">Tanggal Pembuatan Kontrak</th>
                     </tr>
                 </thead>
 
@@ -36,14 +35,6 @@
                         <td>{{ $item->lama_kontrak. ' bulan' }}</td>
                         <td>{{ ($item->status_kontrak == 0) ? 'Sudah Habis' : 'Sedang Berjalan' }}</td>
                         <td><?php echo date('d M Y', strtotime($item->tanggal_lahir)) ?></td>
-                        
-                        <td>
-                            {{-- <div class="btn-group">
-                                <a class="btn btn-success" href="{{ route('admin.data-pegawai.edit', $item->id) }}">
-                                <i class="fas fa-pencil-alt"></i>
-                                </a>
-                            </div> --}}
-                        </td>
                     </tr>
                 <?php $no++;?>
                 

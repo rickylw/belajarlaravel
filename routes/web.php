@@ -16,8 +16,6 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('daftarakun', App\Http\Controllers\DaftarakunController::class); 
     Route::resource('data_pelamar', App\Http\Controllers\DatapelamarController::class); 
     Route::resource('penugasan', App\Http\Controllers\PenugasanController::class);
-    Route::resource('resign', App\Http\Controllers\ResignController::class);
-    Route::resource('datapegawai', App\Http\Controllers\DatapegawaiController::class);
     Route::get('/admin_dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/data_pengajuan/store', [App\Http\Controllers\DatapengajuanController::class, 'store'])->name('datapengajuan.store');;
     Route::post('/lembur/store', [App\Http\Controllers\LemburController::class, 'store'])->name('lembur.store');;
@@ -68,7 +66,6 @@ Route::middleware('role:admin')->group(function () {
     Route::put('/admin_dashboard/data_pegawai/update/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'update'])->name('admin.data-pegawai.update');
     
     Route::get('/admin_dashboard/kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'index'])->name('admin.kontrak-pegawai.index');
-    
     Route::get('/admin_dashboard/kontrak_unitkerja', [App\Http\Controllers\Admin\KontrakUnitKerjaController::class, 'index'])->name('admin.kontrak-unitkerja.index');
     
     Route::get('/admin_dashboard/data_unitkerja', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'index'])->name('admin.data-unitkerja.index');
@@ -99,6 +96,18 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/pesan_keluar/detail/{id}', [App\Http\Controllers\Admin\PesanController::class, 'detailPesanKeluar'])->name('admin.pesan-keluar.detail');
     Route::get('/admin_dashboard/pesan_masuk', [App\Http\Controllers\Admin\PesanController::class, 'pesanMasuk'])->name('admin.pesan-masuk.index');
     Route::get('/admin_dashboard/pesan_masuk/detail/{id}', [App\Http\Controllers\Admin\PesanController::class, 'detailPesanMasuk'])->name('admin.pesan-masuk.detail');
+    
+    Route::get('/admin_dashboard/resign_pegawai', [App\Http\Controllers\Admin\ResignPegawaiController::class, 'index'])->name('admin.resign-pegawai.index');
+    Route::get('/admin_dashboard/resign_pegawai/create', [App\Http\Controllers\Admin\ResignPegawaiController::class, 'create'])->name('admin.resign-pegawai.create');
+    Route::get('/admin_dashboard/resign_pegawai/detail/{id}', [App\Http\Controllers\Admin\ResignPegawaiController::class, 'detail'])->name('admin.resign-pegawai.detail');
+    Route::post('/admin_dashboard/resign_pegawai/submit/{id}', [App\Http\Controllers\Admin\ResignPegawaiController::class, 'submit'])->name('admin.resign-pegawai.submit');
+    Route::get('/admin_dashboard/resign_pegawai/cetakSK/{id}', [App\Http\Controllers\Admin\ResignPegawaiController::class, 'cetakSK'])->name('admin.resign-pegawai.cetak-sk');
+    
+    Route::get('/admin_dashboard/resign_unitkerja', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'index'])->name('admin.resign-unitkerja.index');
+    Route::get('/admin_dashboard/resign_unitkerja/create', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'create'])->name('admin.resign-unitkerja.create');
+    Route::get('/admin_dashboard/resign_unitkerja/detail/{id}', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'detail'])->name('admin.resign-unitkerja.detail');
+    Route::post('/admin_dashboard/resign_unitkerja/submit/{id}', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'submit'])->name('admin.resign-unitkerja.submit');
+    Route::get('/admin_dashboard/resign_unitkerja/cetakSK/{id}', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'cetakSK'])->name('admin.resign-unitkerja.cetak-sk');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
@@ -131,6 +140,13 @@ Route::middleware('role:unitkerja')->group(function () {
     Route::get('/unitkerja_dashboard/training_unitkerja/delete/{id}', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'delete'])->name('unitkerja.training-unitkerja.delete');
     Route::get('/unitkerja_dashboard/training_unitkerja/edit/{id}', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'edit'])->name('unitkerja.training-unitkerja.edit');
     Route::put('/unitkerja_dashboard/training_unitkerja/update/{id}', [App\Http\Controllers\Unitkerja\TrainingUnitKerjaController::class, 'update'])->name('unitkerja.training-unitkerja.update');
+    
+    Route::get('/unitkerja_dashboard/resign', [App\Http\Controllers\Unitkerja\ResignController::class, 'index'])->name('unitkerja.resign.index');
+    Route::get('/unitkerja_dashboard/resign/create', [App\Http\Controllers\Unitkerja\ResignController::class, 'create'])->name('unitkerja.resign.create');
+    Route::post('/unitkerja_dashboard/resign/store', [App\Http\Controllers\Unitkerja\ResignController::class, 'store'])->name('unitkerja.resign.store');
+    Route::get('/unitkerja_dashboard/resign/edit/{id}', [App\Http\Controllers\Unitkerja\ResignController::class, 'edit'])->name('unitkerja.resign.edit');
+    Route::get('/unitkerja_dashboard/resign/delete/{id}', [App\Http\Controllers\Unitkerja\ResignController::class, 'delete'])->name('unitkerja.resign.delete');
+    Route::put('/unitkerja_dashboard/resign/update/{id}', [App\Http\Controllers\Unitkerja\ResignController::class, 'update'])->name('unitkerja.resign.update');
 });
 
 Route::middleware('role:pelamar')->group(function () {
@@ -161,6 +177,14 @@ Route::middleware('role:pimpinan')->group(function () {
     Route::get('/pimpinan_dashboard/pesan_masuk/detail/{id}', [App\Http\Controllers\Pimpinan\PesanController::class, 'detailPesanMasuk'])->name('pimpinan.pesan-masuk.detail');
     Route::get('/pimpinan_dashboard/pesan/create', [App\Http\Controllers\Pimpinan\PesanController::class, 'create'])->name('pimpinan.pesan.create');
     Route::post('/pimpinan_dashboard/pesan/store', [App\Http\Controllers\Pimpinan\PesanController::class, 'store'])->name('pimpinan.pesan.store');
+    
+    Route::get('/pimpinan_dashboard/resign_pegawai', [App\Http\Controllers\Pimpinan\ResignPegawaiController::class, 'index'])->name('pimpinan.resign-pegawai.index');
+    Route::get('/pimpinan_dashboard/resign_pegawai/detail/{id}', [App\Http\Controllers\Pimpinan\ResignPegawaiController::class, 'detail'])->name('pimpinan.resign-pegawai.detail');
+    Route::get('/pimpinan_dashboard/resign_pegawai/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\ResignPegawaiController::class, 'submit'])->name('pimpinan.resign-pegawai.submit');
+    
+    Route::get('/pimpinan_dashboard/resign_unitkerja', [App\Http\Controllers\Pimpinan\ResignUnitKerjaController::class, 'index'])->name('pimpinan.resign-unitkerja.index');
+    Route::get('/pimpinan_dashboard/resign_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\ResignUnitKerjaController::class, 'detail'])->name('pimpinan.resign-unitkerja.detail');
+    Route::get('/pimpinan_dashboard/resign_unitkerja/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\ResignUnitKerjaController::class, 'submit'])->name('pimpinan.resign-unitkerja.submit');
 });
 
 Route::middleware('role:pegawai')->group(function () {
@@ -172,4 +196,11 @@ Route::middleware('role:pegawai')->group(function () {
     Route::get('/pegawai_dashboard/lembur/delete/{id}', [App\Http\Controllers\Pegawai\LemburController::class, 'delete'])->name('pegawai.lembur.delete');
     Route::get('/pegawai_dashboard/lembur/edit/{id}', [App\Http\Controllers\Pegawai\LemburController::class, 'edit'])->name('pegawai.lembur.edit');
     Route::put('/pegawai_dashboard/lembur/update/{id}', [App\Http\Controllers\Pegawai\LemburController::class, 'update'])->name('pegawai.lembur.update');
+    
+    Route::get('/pegawai_dashboard/resign', [App\Http\Controllers\Pegawai\ResignController::class, 'index'])->name('pegawai.resign.index');
+    Route::get('/pegawai_dashboard/resign/create', [App\Http\Controllers\Pegawai\ResignController::class, 'create'])->name('pegawai.resign.create');
+    Route::post('/pegawai_dashboard/resign/store', [App\Http\Controllers\Pegawai\ResignController::class, 'store'])->name('pegawai.resign.store');
+    Route::get('/pegawai_dashboard/resign/edit/{id}', [App\Http\Controllers\Pegawai\ResignController::class, 'edit'])->name('pegawai.resign.edit');
+    Route::get('/pegawai_dashboard/resign/delete/{id}', [App\Http\Controllers\Pegawai\ResignController::class, 'delete'])->name('pegawai.resign.delete');
+    Route::put('/pegawai_dashboard/resign/update/{id}', [App\Http\Controllers\Pegawai\ResignController::class, 'update'])->name('pegawai.resign.update');
 });
