@@ -122,7 +122,13 @@
               <li class="nav-item">
                 <a href="{{route('admin.kontrak-unitkerja.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kontrak Pegawai</p>
+                  <p>Kontrak Unit Kerja</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('admin.re-kontrak-unitkerja.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Re-Kontrak Unit Kerja</p>
                 </a>
               </li>
             </ul>
