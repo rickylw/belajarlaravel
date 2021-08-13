@@ -18,6 +18,7 @@ class CreateKontrakUnitKerjasTable extends Migration
             $table->integer('lama_kontrak'); //bulan
             $table->bigInteger('id_unitkerja')->unsigned();
             $table->integer('status'); //bulan
+            $table->date('tanggal_habis_kontrak');
             $table->unique('id_unitkerja'); 
             $table->foreign('id_unitkerja')->references('id')->on('tbl_dataunitkerja'); 
             $table->timestamps();

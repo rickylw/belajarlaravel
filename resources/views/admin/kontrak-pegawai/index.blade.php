@@ -15,12 +15,13 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed">
                 <thead>
                     <tr>
-                        <th style="width: 5%">#</th>
+                        <th style="width: 10%">#</th>
                         <th style="width: 15%">NIP</th>
-                        <th style="width: 25%">Nama</th>
-                        <th style="width: 15%">Lama Kontrak</th>
-                        <th style="width: 15%">Status Kontrak</th>
-                        <th style="width: 25%">Tanggal Pembuatan Kontrak</th>
+                        <th style="width: 20%">Nama</th>
+                        <th style="width: 10%">Lama Kontrak</th>
+                        <th style="width: 10%">Status Kontrak</th>
+                        <th style="width: 20%">Tanggal Pembuatan Kontrak</th>
+                        <th style="width: 20%">Tanggal Habis Kontrak</th>
                     </tr>
                 </thead>
 
@@ -34,7 +35,8 @@
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->lama_kontrak. ' bulan' }}</td>
                         <td>{{ ($item->status_kontrak == 0) ? 'Sudah Habis' : 'Sedang Berjalan' }}</td>
-                        <td><?php echo date('d M Y', strtotime($item->tanggal_lahir)) ?></td>
+                        <td><?php echo date('d M Y', strtotime($item->tanggal_pembuatan_kontrak)) ?></td>
+                        <td><?php echo date('d M Y', strtotime($item->tanggal_habis_kontrak)) ?></td>
                     </tr>
                 <?php $no++;?>
                 

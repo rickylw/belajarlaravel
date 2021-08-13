@@ -18,6 +18,7 @@ class CreateKontrakPegawaisTable extends Migration
             $table->integer('lama_kontrak'); //bulan
             $table->bigInteger('id_pegawai')->unsigned();
             $table->integer('status'); //bulan
+            $table->date('tanggal_habis_kontrak');
             $table->unique('id_pegawai'); 
             $table->foreign('id_pegawai')->references('id')->on('tbl_datapegawai'); 
             $table->timestamps();

@@ -11,6 +11,7 @@ class KontrakPegawai extends Model
     protected $fillable = [ 
         "lama_kontrak",
         "id_pegawai",
-        "status"
+        "status",
+        "tanggal_habis_kontrak"
     ]; 
 }

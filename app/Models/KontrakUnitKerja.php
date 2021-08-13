@@ -11,6 +11,7 @@ class KontrakUnitKerja extends Model
     protected $fillable = [ 
         "lama_kontrak",
         "id_unitkerja",
-        "status"
+        "status",
+        "tanggal_habis_kontrak"
     ]; 
 }

@@ -66,6 +66,7 @@ Route::middleware('role:admin')->group(function () {
     Route::put('/admin_dashboard/data_pegawai/update/{id}', [App\Http\Controllers\Admin\DataPegawaiController::class, 'update'])->name('admin.data-pegawai.update');
     
     Route::get('/admin_dashboard/kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'index'])->name('admin.kontrak-pegawai.index');
+    Route::get('/admin_dashboard/re_kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'reIndex'])->name('admin.re-kontrak-pegawai.index');
     Route::get('/admin_dashboard/kontrak_unitkerja', [App\Http\Controllers\Admin\KontrakUnitKerjaController::class, 'index'])->name('admin.kontrak-unitkerja.index');
     
     Route::get('/admin_dashboard/data_unitkerja', [App\Http\Controllers\Admin\DataUnitKerjaController::class, 'index'])->name('admin.data-unitkerja.index');

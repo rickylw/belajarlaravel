@@ -8,6 +8,8 @@ class DashboardController extends Controller {
     $this->middleware('auth');
   }
   public function index() {
+    // $now = date('d-m-Y');
+    // dd(date('d-m-Y', strtotime("+3 months", strtotime($now))). $now);
     return view('admin.dashboard');
   }
 }

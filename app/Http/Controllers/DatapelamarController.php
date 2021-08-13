@@ -375,6 +375,8 @@ class DatapelamarController extends Controller
          $kontrakPegawai->id_pegawai = $pegawai->id;
          $kontrakPegawai->lama_kontrak = $request->lama_kontrak;
          $kontrakPegawai->status = 1;
+         $now = date('d-m-Y');
+         $kontrakPegawai->tanggal_habis_kontrak = date('Y-m-d', strtotime("+".$request->lama_kontrak." months", strtotime($now)));
          $kontrakPegawai->save();
       }
       else if($request->jenis_pekerjaan == 'Unit Kerja'){
@@ -414,6 +416,8 @@ class DatapelamarController extends Controller
          $kontrakUnitKerja->id_unitkerja = $unitkerja->id;
          $kontrakUnitKerja->lama_kontrak = $request->lama_kontrak;
          $kontrakUnitKerja->status = 1;
+         $now = date('d-m-Y');
+         $kontrakUnitKerja->tanggal_habis_kontrak = date('Y-m-d', strtotime("+".$request->lama_kontrak." months", strtotime($now)));
          $kontrakUnitKerja->save();
       }
 
