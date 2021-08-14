@@ -24,6 +24,7 @@ class Datapegawai extends Model
       'tahun_kelulusan',
       'id_user',
       'id_pelamar',
+      'sk_pegawai_tetap'
    ]; 
 } 
 ?>

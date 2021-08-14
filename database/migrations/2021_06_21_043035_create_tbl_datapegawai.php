@@ -32,6 +32,7 @@ class CreateTblDatapegawai extends Migration
             $table->string('pendidikan');
             $table->string('program_studi')->nullable();
             $table->string('tahun_kelulusan');
+            $table->text('sk_pegawai_tetap')->nullable();
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_pelamar')->unsigned();
             $table->unique('id_user'); 

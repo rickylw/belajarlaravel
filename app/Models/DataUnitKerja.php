@@ -28,5 +28,6 @@ class DataUnitKerja extends Model
       'tahun_kelulusan',
       'id_user',
       'id_pelamar',
+      'sk_unitkerja_tetap'
    ]; 
 }

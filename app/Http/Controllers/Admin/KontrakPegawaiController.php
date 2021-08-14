@@ -8,6 +8,7 @@ use App\Models\PengajuanPerpanjanganKontrakPegawai;
 use App\Models\DataPegawai; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class KontrakPegawaiController extends Controller
 {
@@ -82,11 +83,21 @@ class KontrakPegawaiController extends Controller
             'tipe' => 'required'
         ]);
 
+        $perpanjanganKontrak = PengajuanPerpanjanganKontrakPegawai::where('id', $id)->first();
+        $perpanjanganKontrak->status = 1;
+        $perpanjanganKontrak->save();
+
+        $kontrakPegawai = KontrakPegawai::where('id', $perpanjanganKontrak->id_kontrak_pegawai)->first();
+        $pegawai = DataPegawai::where('id', $kontrakPegawai->id_pegawai)->first();
+
         if($request->tipe == 1){
-            dd("tetap");
+            //cetak sk pegawai
+            $pdf = PDF::loadView('pdf/surat-keterangan-pegawai-tetap', compact('pegawai'));
+            return $pdf->download('tes.pdf');
         }
         else if($request->tipe == 2){
-            dd("putus");
+            $pegawai->status = 0;
+            $pegawai->save();
         }
         else if($request->tipe == 3){
             dd("panjang");
