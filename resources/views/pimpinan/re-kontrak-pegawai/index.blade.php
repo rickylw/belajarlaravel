@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts_pimpinan.master')
 
 @section('content')
 <div class="container">
@@ -7,7 +7,7 @@
         
         <div class="card">
             <div class="card-header">
-                <p class="my-auto">Data Pengajuan Kontrak Pegawai</p>
+                <p class="my-auto">Data Perpanjangan Kontrak Pegawai</p>
             </a>
         </div>
         
@@ -28,17 +28,17 @@
                 <tbody>
                 <?php $no=1;?>
                 
-                @forelse($pegawai as $item)
+                @forelse($kontrakPegawai as $item)
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $item->nip }}</td>
                         <td>{{ $item->nama }}</td>
-                        <td><?php echo date('d M Y', strtotime($item->tanggal_pembuatan_kontrak)) ?></td>
+                        <td><?php echo date('d M Y', strtotime($item->created_at)) ?></td>
                         <td><?php echo date('d M Y', strtotime($item->tanggal_habis_kontrak)) ?></td>
                         <td>{{ $item->diff. ' hari' }}</td>
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{{ route('admin.kontrak-pegawai.detail', $item->id) }}">
+                                <a class="btn btn-primary" href="{{ route('pimpinan.re-kontrak-pegawai.detail', $item->id) }}">
                                 Detail
                                 </a>
                             </div>

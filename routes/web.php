@@ -68,6 +68,11 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'index'])->name('admin.kontrak-pegawai.index');
     Route::get('/admin_dashboard/kontrak_pegawai/detail/{id}', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'detail'])->name('admin.kontrak-pegawai.detail');
     Route::get('/admin_dashboard/re_kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'reIndex'])->name('admin.re-kontrak-pegawai.index');
+    Route::post('/admin_dashboard/re_kontrak_pegawai/forward/{id}', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'forward'])->name('admin.re-kontrak-pegawai.forward');
+    Route::get('/admin_dashboard/pengajuan_kontrak_pegawai', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'pengajuanIndex'])->name('admin.pengajuan-kontrak-pegawai.index');
+    Route::get('/admin_dashboard/pengajuan_kontrak_pegawai/detail/{id}', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'detailPengajuan'])->name('admin.pengajuan-kontrak-pegawai.detail');
+    Route::post('/admin_dashboard/pengajuan_kontrak_pegawai/submit/{id}', [App\Http\Controllers\Admin\KontrakPegawaiController::class, 'submitPengajuan'])->name('admin.pengajuan-kontrak-pegawai.submit');
+
     Route::get('/admin_dashboard/kontrak_unitkerja', [App\Http\Controllers\Admin\KontrakUnitKerjaController::class, 'index'])->name('admin.kontrak-unitkerja.index');
     Route::get('/admin_dashboard/kontrak_unitkerja/detail/{id}', [App\Http\Controllers\Admin\KontrakUnitKerjaController::class, 'detail'])->name('admin.kontrak-unitkerja.detail');
     Route::get('/admin_dashboard/re_kontrak_unitkerja', [App\Http\Controllers\Admin\KontrakUnitKerjaController::class, 'reIndex'])->name('admin.re-kontrak-unitkerja.index');
@@ -189,6 +194,10 @@ Route::middleware('role:pimpinan')->group(function () {
     Route::get('/pimpinan_dashboard/resign_unitkerja', [App\Http\Controllers\Pimpinan\ResignUnitKerjaController::class, 'index'])->name('pimpinan.resign-unitkerja.index');
     Route::get('/pimpinan_dashboard/resign_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\ResignUnitKerjaController::class, 'detail'])->name('pimpinan.resign-unitkerja.detail');
     Route::get('/pimpinan_dashboard/resign_unitkerja/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\ResignUnitKerjaController::class, 'submit'])->name('pimpinan.resign-unitkerja.submit');
+    
+    Route::get('/pimpinan_dashboard/re_kontrak_pegawai', [App\Http\Controllers\Pimpinan\KontrakPegawaiController::class, 'index'])->name('pimpinan.re-kontrak-pegawai.index');
+    Route::get('/pimpinan_dashboard/re_kontrak_pegawai/detail/{id}', [App\Http\Controllers\Pimpinan\KontrakPegawaiController::class, 'detail'])->name('pimpinan.re-kontrak-pegawai.detail');
+    Route::post('/pimpinan_dashboard/re_kontrak_pegawai/submit/{id}', [App\Http\Controllers\Pimpinan\KontrakPegawaiController::class, 'submit'])->name('pimpinan.re-kontrak-pegawai.submit');
 });
 
 Route::middleware('role:pegawai')->group(function () {

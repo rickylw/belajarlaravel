@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts_pimpinan.master')
 
 @section('content')
 <div class="container">
@@ -17,49 +17,55 @@
         </div>
         
         <div class="card-body">
-            <form class="form-horizontal" action="{{ route('admin.re-kontrak-pegawai.forward', $pegawai->id_kontrak) }}" method="post" enctype="multipart/form-data"> 
+            <form class="form-horizontal" action="{{ route('pimpinan.re-kontrak-pegawai.submit', $kontrakPegawai->id) }}" method="post" enctype="multipart/form-data"> 
                 {{ csrf_field() }}
                 <div class="row">
                     <p class="text-muted col-xl-3 my-auto"><b>Nama Pegawai</b></p>
-                    <p class="col-xl-9 my-auto">{{$pegawai->nama}}</p>                  
+                    <p class="col-xl-9 my-auto">{{$kontrakPegawai->nama}}</p>                  
                 </div>
                 <hr class="my-2" />
                 
                 <div class="row">
                     <p class="text-muted col-xl-3 my-auto"><b>Jabatan</b></p>
-                    <p class="col-xl-9 my-auto">{{$pegawai->jabatan}}</p>                  
+                    <p class="col-xl-9 my-auto">{{$kontrakPegawai->jabatan}}</p>                  
                 </div>
                 <hr class="my-2" />
 
                 <div class="row">
                     <p class="text-muted col-xl-3 my-auto"><b>Lama Kontrak</b></p>
-                    <p class="col-xl-9 my-auto">{{$pegawai->lama_kontrak}} bulan</p>    
+                    <p class="col-xl-9 my-auto">{{$kontrakPegawai->lama_kontrak}} bulan</p>    
                 </div>
                 <hr class="my-2" />
 
                 <div class="row">
                     <p class="text-muted col-xl-3 my-auto"><b>Tanggal Pembuatan Kontrak</b></p>
-                    <p class="col-xl-9 my-auto">{{date('d M y', strtotime($pegawai->tanggal_pembuatan_kontrak))}}</p>    
+                    <p class="col-xl-9 my-auto">{{date('d M y', strtotime($kontrakPegawai->created_at))}}</p>    
                 </div>
                 <hr class="my-2" />
 
                 <div class="row">
                     <p class="text-muted col-xl-3 my-auto"><b>Tanggal Habis Kontrak</b></p>
-                    <p class="col-xl-9 my-auto">{{date('d M y', strtotime($pegawai->tanggal_habis_kontrak))}}</p>    
+                    <p class="col-xl-9 my-auto">{{date('d M y', strtotime($kontrakPegawai->tanggal_habis_kontrak))}}</p>    
                 </div>
                 <hr class="my-2" />
 
                 <div class="row">
                     <p class="text-muted col-xl-3 my-auto"><b>Sisa Waktu</b></p>
-                    <p class="col-xl-9 my-auto">{{$pegawai->diff}} hari</p>    
+                    <p class="col-xl-9 my-auto">{{$kontrakPegawai->diff}} hari</p>    
+                </div>
+                <hr class="my-2" />
+
+                <div class="row">
+                    <p class="text-muted col-xl-3 my-auto"><b>Analisis SDM</b></p>
+                    <div class="col-xl-9 my-auto"><?php echo $kontrakPegawai->analisis_sdm ?></div>    
                 </div>
                 <hr class="my-2" />
 
                 <div class="form-group">
-                    <label for="ttl" class="col-sm-6 control-label">Analisis</label>
+                    <label for="ttl" class="col-sm-6 control-label">Keputusan</label>
                     <div class="col-sm-10">
                     <textarea class="editor form-control" name="editor" id="editor">
-                        
+                        {{$kontrakPegawai->keputusan_pimpinan ?? ''}}
                     </textarea>
                     </div>
                 </div>
@@ -67,7 +73,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                     <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
-                    <a href="{{ route('admin.resign-pegawai.index') }}" class="btn btn-primary" role="button">Batal</a>
+                    <a href="{{ route('pimpinan.re-kontrak-pegawai.index') }}" class="btn btn-primary" role="button">Batal</a>
                     </div>
                 </div>
             </form>    
@@ -101,7 +107,6 @@
 <script type="text/javascript">
     CKEDITOR.replace( 'editor' );
 </script>
-<script src="{{asset('assets/dist/js/pages/admin/jadwal-tes.js')}}"></script>
     
 @endsection
         

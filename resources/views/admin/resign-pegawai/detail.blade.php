@@ -50,7 +50,7 @@
                     <label for="ttl" class="col-sm-6 control-label">Analisis</label>
                     <div class="col-sm-10">
                     <textarea class="editor form-control" name="editor" id="editor">
-                        {{$resignPegawai->analisis_sdm}}
+                        {{$resignPegawai->analisis_sdm ?? ''}}
                     </textarea>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
         
         <div class="card">
             <div class="card-header">
-                <p class="my-auto">Data Pengajuan Kontrak Pegawai</p>
+                <p class="my-auto">Data Kontrak Pegawai</p>
             </a>
         </div>
         
@@ -28,7 +28,7 @@
                 <tbody>
                 <?php $no=1;?>
                 
-                @forelse($pegawai as $item)
+                @forelse($pengajuan as $item)
                     <tr>
                         <td>{{ $no }}</td>
                         <td>{{ $item->nip }}</td>
@@ -38,7 +38,7 @@
                         <td>{{ $item->diff. ' hari' }}</td>
                         <td>
                             <div class="btn-group">
-                                <a class="btn btn-primary" href="{{ route('admin.kontrak-pegawai.detail', $item->id) }}">
+                                <a class="btn btn-primary" href="{{ route('admin.pengajuan-kontrak-pegawai.detail', $item->id) }}">
                                 Detail
                                 </a>
                             </div>

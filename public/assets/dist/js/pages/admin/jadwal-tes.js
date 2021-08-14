@@ -30,3 +30,18 @@ $('#dropdown-unitkerja a').on("click", function(){
     $('#btn-unitkerja').html($(this).html());
     $('#unitkerja').val($(this).attr('id'));
 });
+
+$('#group-radio div input').on("click", function(){
+    if($(this)[0].id == "customRadio3"){
+        $('#waktu-kontrak')[0].disabled = false;
+        $('#tipe').val(3);
+    }
+    else if($(this)[0].id == "customRadio2"){
+        $('#waktu-kontrak')[0].disabled = true;
+        $('#tipe').val(2);
+    }
+    else if($(this)[0].id == "customRadio1"){
+        $('#waktu-kontrak')[0].disabled = true;
+        $('#tipe').val(1);
+    }
+})

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PengajuanPerpanjanganKontrakPegawai extends Model
+class PengajuanPerpanjanganKontrakUnitKerja extends Model
 {
-    protected $table = 'tbl_perpanjangan_kontrak_pegawai';
+    protected $table = 'tbl_perpanjangan_kontrak_unitkerja';
     protected $fillable = [ 
-        "id_kontrak_pegawai",
+        "id_kontrak_unitkerja",
         "analisis_sdm",
         "keputusan_pimpinan",
         "status"
