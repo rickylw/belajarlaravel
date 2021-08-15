@@ -121,6 +121,12 @@ Route::middleware('role:admin')->group(function () {
     Route::get('/admin_dashboard/resign_unitkerja/detail/{id}', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'detail'])->name('admin.resign-unitkerja.detail');
     Route::post('/admin_dashboard/resign_unitkerja/submit/{id}', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'submit'])->name('admin.resign-unitkerja.submit');
     Route::get('/admin_dashboard/resign_unitkerja/cetakSK/{id}', [App\Http\Controllers\Admin\ResignUnitKerjaController::class, 'cetakSK'])->name('admin.resign-unitkerja.cetak-sk');
+    
+    Route::get('/admin_dashboard/permohonan_penugasan_pegawai', [App\Http\Controllers\Admin\PermohonanPenugasanPegawaiController::class, 'index'])->name('admin.permohonan-penugasan-pegawai.index');
+    Route::get('/admin_dashboard/permohonan_penugasan_pegawai/detail/{id}', [App\Http\Controllers\Admin\PermohonanPenugasanPegawaiController::class, 'detail'])->name('admin.permohonan-penugasan-pegawai.detail');
+    
+    Route::get('/admin_dashboard/permohonan_penugasan_unitkerja', [App\Http\Controllers\Admin\PermohonanPenugasanUnitKerjaController::class, 'index'])->name('admin.permohonan-penugasan-unitkerja.index');
+    Route::get('/admin_dashboard/permohonan_penugasan_unitkerja/detail/{id}', [App\Http\Controllers\Admin\PermohonanPenugasanUnitKerjaController::class, 'detail'])->name('admin.permohonan-penugasan-unitkerja.detail');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
@@ -160,6 +166,13 @@ Route::middleware('role:unitkerja')->group(function () {
     Route::get('/unitkerja_dashboard/resign/edit/{id}', [App\Http\Controllers\Unitkerja\ResignController::class, 'edit'])->name('unitkerja.resign.edit');
     Route::get('/unitkerja_dashboard/resign/delete/{id}', [App\Http\Controllers\Unitkerja\ResignController::class, 'delete'])->name('unitkerja.resign.delete');
     Route::put('/unitkerja_dashboard/resign/update/{id}', [App\Http\Controllers\Unitkerja\ResignController::class, 'update'])->name('unitkerja.resign.update');
+    
+    Route::get('/unitkerja_dashboard/permohonan_penugasan', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'index'])->name('unitkerja.permohonan-penugasan.index');
+    Route::get('/unitkerja_dashboard/permohonan_penugasan/create', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'create'])->name('unitkerja.permohonan-penugasan.create');
+    Route::post('/unitkerja_dashboard/permohonan_penugasan/store', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'store'])->name('unitkerja.permohonan-penugasan.store');
+    Route::get('/unitkerja_dashboard/permohonan_penugasan/edit/{id}', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'edit'])->name('unitkerja.permohonan-penugasan.edit');
+    Route::get('/unitkerja_dashboard/permohonan_penugasan/delete/{id}', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'delete'])->name('unitkerja.permohonan-penugasan.delete');
+    Route::put('/unitkerja_dashboard/permohonan_penugasan/update/{id}', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'update'])->name('unitkerja.permohonan-penugasan.update');
 });
 
 Route::middleware('role:pelamar')->group(function () {
@@ -224,4 +237,11 @@ Route::middleware('role:pegawai')->group(function () {
     Route::get('/pegawai_dashboard/resign/edit/{id}', [App\Http\Controllers\Pegawai\ResignController::class, 'edit'])->name('pegawai.resign.edit');
     Route::get('/pegawai_dashboard/resign/delete/{id}', [App\Http\Controllers\Pegawai\ResignController::class, 'delete'])->name('pegawai.resign.delete');
     Route::put('/pegawai_dashboard/resign/update/{id}', [App\Http\Controllers\Pegawai\ResignController::class, 'update'])->name('pegawai.resign.update');
+    
+    Route::get('/pegawai_dashboard/permohonan_penugasan', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'index'])->name('pegawai.permohonan-penugasan.index');
+    Route::get('/pegawai_dashboard/permohonan_penugasan/create', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'create'])->name('pegawai.permohonan-penugasan.create');
+    Route::post('/pegawai_dashboard/permohonan_penugasan/store', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'store'])->name('pegawai.permohonan-penugasan.store');
+    Route::get('/pegawai_dashboard/permohonan_penugasan/edit/{id}', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'edit'])->name('pegawai.permohonan-penugasan.edit');
+    Route::get('/pegawai_dashboard/permohonan_penugasan/delete/{id}', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'delete'])->name('pegawai.permohonan-penugasan.delete');
+    Route::put('/pegawai_dashboard/permohonan_penugasan/update/{id}', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'update'])->name('pegawai.permohonan-penugasan.update');
 });

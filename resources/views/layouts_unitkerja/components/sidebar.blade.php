@@ -43,6 +43,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('unitkerja.permohonan-penugasan.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Permohonan Penugasan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('unitkerja.resign.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
