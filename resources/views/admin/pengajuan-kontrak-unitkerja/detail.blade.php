@@ -8,19 +8,16 @@
         <div class="card">
             <div class="card-header">
                 <div class="row justify-content-between">
-                    <h4 class="my-auto">Detail Kontrak Pegawai</h4>                    
-                    {{-- @if ($lemburPegawai->status == 1)
-                        <a href="{{asset($lemburPegawai->surat_keterangan_lembur)}}" class="btn btn-success ml-4">Surat Lembur</a>
-                    @endif --}}
+                    <h4 class="my-auto">Detail Kontrak Unit Kerja</h4>       
                 </div>
             </a>
         </div>
         
         <div class="card-body">
-            <form class="form-horizontal" action="{{ route('admin.pengajuan-kontrak-pegawai.submit', $pengajuan->id) }}" method="post" enctype="multipart/form-data"> 
+            <form class="form-horizontal" action="{{ route('admin.pengajuan-kontrak-unitkerja.submit', $pengajuan->id) }}" method="post" enctype="multipart/form-data"> 
                 {{ csrf_field() }}
                 <div class="row">
-                    <p class="text-muted col-xl-3 my-auto"><b>Nama Pegawai</b></p>
+                    <p class="text-muted col-xl-3 my-auto"><b>Nama Unit Kerja</b></p>
                     <p class="col-xl-9 my-auto">{{$pengajuan->nama}}</p>                  
                 </div>
                 <hr class="my-2" />
@@ -73,7 +70,7 @@
                         <div id="group-radio">
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="A">
-                                <label class="custom-control-label" for="customRadio1">Menjadi Pegawai Tetap</label>
+                                <label class="custom-control-label" for="customRadio1">Menjadi Unit Kerja Tetap</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="B">
@@ -92,27 +89,11 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" class="btn btn-success btn-md" name="simpan" value="Simpan">
-                        <a href="{{ route('pimpinan.re-kontrak-pegawai.index') }}" class="btn btn-primary" role="button">Batal</a>
+                        <a href="{{ route('pimpinan.re-kontrak-unitkerja.index') }}" class="btn btn-primary" role="button">Batal</a>
                         </div>
                     </div>
                 @endif
             </form>    
-
-            {{-- @if ($lemburPegawai->status == 0)
-                <div class="row">
-                    <div>
-                        <a class="btn btn-success" href="{{ route('admin.lembur-pegawai.submit', [$lemburPegawai->id, 1]) }}">Setuju
-                        <i class="fas fa-check"></i>
-                        </a>
-                    </div>
-                    <div class="ml-3">
-                        <a class="btn btn-danger" href="{{ route('admin.lembur-pegawai.submit', [$lemburPegawai->id, 2]) }}">Tolak
-                        <i class="fas fa-times"></i>
-                        </a>
-                    </div>
-                </div>
-                <hr class="my-2" />
-            @endif --}}
         
           </div>
         

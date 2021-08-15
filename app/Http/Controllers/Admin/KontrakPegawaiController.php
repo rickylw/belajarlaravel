@@ -43,6 +43,7 @@ class KontrakPegawaiController extends Controller
                     ->join('tbl_kontrak_pegawai', 'tbl_perpanjangan_kontrak_pegawai.id_kontrak_pegawai', '=', 'tbl_kontrak_pegawai.id')
                     ->join('tbl_datapegawai', 'tbl_datapegawai.id', '=', 'tbl_kontrak_pegawai.id_pegawai')
                     ->select(DB::raw('tbl_datapegawai.*, tbl_kontrak_pegawai.lama_kontrak as lama_kontrak, tbl_kontrak_pegawai.status as status_kontrak, tbl_kontrak_pegawai.created_at as tanggal_pembuatan_kontrak, tbl_kontrak_pegawai.tanggal_habis_kontrak as tanggal_habis_kontrak, DATEDIFF(tbl_kontrak_pegawai.tanggal_habis_kontrak, now()) as diff'))
+                    ->where('tbl_perpanjangan_kontrak_pegawai.status', 0)
                     ->paginate(10);
         return view('admin.pengajuan-kontrak-pegawai.index', compact('pengajuan'));
     }
@@ -84,8 +85,6 @@ class KontrakPegawaiController extends Controller
         ]);
 
         $perpanjanganKontrak = PengajuanPerpanjanganKontrakPegawai::where('id', $id)->first();
-        $perpanjanganKontrak->status = 1;
-        $perpanjanganKontrak->save();
 
         $kontrakPegawai = KontrakPegawai::where('id', $perpanjanganKontrak->id_kontrak_pegawai)->first();
         $pegawai = DataPegawai::where('id', $kontrakPegawai->id_pegawai)->first();
@@ -93,14 +92,39 @@ class KontrakPegawaiController extends Controller
         if($request->tipe == 1){
             //cetak sk pegawai
             $pdf = PDF::loadView('pdf/surat-keterangan-pegawai-tetap', compact('pegawai'));
-            return $pdf->download('tes.pdf');
+
+            $namefile = 'surat_keterangan_pegawai_tetap'. date("Y_m_d_H_i_s") .'.pdf';
+            $path = 'storage/pegawai/'.$pegawai->id_user.'/'.$namefile;
+            $pdf->save($path);
+
+            $pegawai->sk_pegawai_tetap = $path;
+            $pegawai->save();
+            $perpanjanganKontrak->status = 1;
         }
         else if($request->tipe == 2){
             $pegawai->status = 0;
             $pegawai->save();
+            $perpanjanganKontrak->status = 1;
         }
         else if($request->tipe == 3){
-            dd("panjang");
+            $this->validate($request, [ 
+                'lama_kontrak' => 'required'
+            ]);
+            $perpanjanganKontrak->status = 1;
+
+            $kontrakPegawai = new KontrakPegawai();
+            $kontrakPegawai->id_pegawai = $pegawai->id;
+            $kontrakPegawai->lama_kontrak = $request->lama_kontrak;
+            $kontrakPegawai->status = 1;
+            $now = date('d-m-Y');
+            $kontrakPegawai->tanggal_habis_kontrak = date('Y-m-d', strtotime("+".$request->lama_kontrak." months", strtotime($now)));
+            $kontrakPegawai->save();
         }
+
+        $perpanjanganKontrak->save();
+        return redirect()->route("admin.pengajuan-kontrak-pegawai.index")->with( 
+            "success", 
+            "Data berhasil disimpan." 
+        ); 
     }
 }

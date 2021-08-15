@@ -156,7 +156,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{route('pimpinan.pesan-masuk.index')}}" class="nav-link">
+                    <a href="{{route('pimpinan.re-kontrak-unitkerja.index')}}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Unit Kerja</p>
                     </a>

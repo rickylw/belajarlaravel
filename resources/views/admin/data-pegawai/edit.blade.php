@@ -24,6 +24,15 @@
 <div class="card-body">
 <form class="form-horizontal" action="{{ route('admin.data-pegawai.update', $pegawai->id)}}" method="post" enctype="multipart/form-data"> @method('PUT')
     {{ csrf_field() }}  
+
+    @if (isset($pegawai->sk_pegawai_tetap))
+        <div class="form-group">
+            <label for="nip" class="col-sm-2 control-label">SK Pegawai Tetap</label>
+            <div class="col-sm-10">
+                <a href="{{asset($pegawai->sk_pegawai_tetap)}}"><?php echo explode('/', $pegawai->sk_pegawai_tetap)[3] ?></a>
+            </div>
+        </div>
+    @endif
     
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Pekerjaan</label>

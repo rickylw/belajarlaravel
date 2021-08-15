@@ -25,6 +25,15 @@
 <form class="form-horizontal" action="{{ route('admin.data-unitkerja.update', $unitkerja->id)}}" method="post" enctype="multipart/form-data"> @method('PUT')
     {{ csrf_field() }}  
     
+    @if (isset($unitkerja->sk_unitkerja_tetap))
+        <div class="form-group">
+            <label for="nip" class="col-sm-2 control-label">SK Unit Kerja Tetap</label>
+            <div class="col-sm-10">
+                <a href="{{asset($unitkerja->sk_unitkerja_tetap)}}"><?php echo explode('/', $unitkerja->sk_unitkerja_tetap)[3] ?></a>
+            </div>
+        </div>
+    @endif
+
     <div class="form-group">
         <label for="nip" class="col-sm-2 control-label">Pekerjaan</label>
         <div class="col-sm-10">
