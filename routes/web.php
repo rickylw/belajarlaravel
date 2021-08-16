@@ -15,7 +15,6 @@ Route::middleware('role:admin')->group(function () {
     Route::resource('data_pengajuan', App\Http\Controllers\DatapengajuanController::class); 
     Route::resource('daftarakun', App\Http\Controllers\DaftarakunController::class); 
     Route::resource('data_pelamar', App\Http\Controllers\DatapelamarController::class); 
-    Route::resource('penugasan', App\Http\Controllers\PenugasanController::class);
     Route::get('/admin_dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/data_pengajuan/store', [App\Http\Controllers\DatapengajuanController::class, 'store'])->name('datapengajuan.store');;
     Route::post('/lembur/store', [App\Http\Controllers\LemburController::class, 'store'])->name('lembur.store');;
@@ -127,6 +126,34 @@ Route::middleware('role:admin')->group(function () {
     
     Route::get('/admin_dashboard/permohonan_penugasan_unitkerja', [App\Http\Controllers\Admin\PermohonanPenugasanUnitKerjaController::class, 'index'])->name('admin.permohonan-penugasan-unitkerja.index');
     Route::get('/admin_dashboard/permohonan_penugasan_unitkerja/detail/{id}', [App\Http\Controllers\Admin\PermohonanPenugasanUnitKerjaController::class, 'detail'])->name('admin.permohonan-penugasan-unitkerja.detail');
+    
+    Route::get('/admin_dashboard/penugasan_pegawai', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'index'])->name('admin.penugasan-pegawai.index');
+    Route::get('/admin_dashboard/penugasan_pegawai/create', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'create'])->name('admin.penugasan-pegawai.create');
+    Route::post('/admin_dashboard/penugasan_pegawai/store', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'store'])->name('admin.penugasan-pegawai.store');
+    Route::get('/admin_dashboard/penugasan_pegawai/delete/{id}', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'delete'])->name('admin.penugasan-pegawai.delete');
+    Route::get('/admin_dashboard/penugasan_pegawai/edit/{id}', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'edit'])->name('admin.penugasan-pegawai.edit');
+    Route::put('/admin_dashboard/penugasan_pegawai/update/{id}', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'update'])->name('admin.penugasan-pegawai.update');
+    Route::get('/admin_dashboard/penugasan_pegawai/cetakSK/{id}', [App\Http\Controllers\Admin\PenugasanPegawaiController::class, 'cetakSK'])->name('admin.penugasan-pegawai.cetak-sk');
+    
+    Route::get('/admin_dashboard/penugasan_unitkerja', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'index'])->name('admin.penugasan-unitkerja.index');
+    Route::get('/admin_dashboard/penugasan_unitkerja/create', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'create'])->name('admin.penugasan-unitkerja.create');
+    Route::post('/admin_dashboard/penugasan_unitkerja/store', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'store'])->name('admin.penugasan-unitkerja.store');
+    Route::get('/admin_dashboard/penugasan_unitkerja/delete/{id}', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'delete'])->name('admin.penugasan-unitkerja.delete');
+    Route::get('/admin_dashboard/penugasan_unitkerja/edit/{id}', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'edit'])->name('admin.penugasan-unitkerja.edit');
+    Route::put('/admin_dashboard/penugasan_unitkerja/update/{id}', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'update'])->name('admin.penugasan-unitkerja.update');
+    Route::get('/admin_dashboard/penugasan_unitkerja/cetakSK/{id}', [App\Http\Controllers\Admin\PenugasanUnitKerjaController::class, 'cetakSK'])->name('admin.penugasan-unitkerja.cetak-sk');
+    
+    Route::get('/admin_dashboard/pensiun_pegawai', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'index'])->name('admin.pensiun-pegawai.index');
+    Route::get('/admin_dashboard/pensiun_pegawai/detail/{id}', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'detail'])->name('admin.pensiun-pegawai.detail');
+    Route::post('/admin_dashboard/pensiun_pegawai/forward/{id}', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'forward'])->name('admin.pensiun-pegawai.forward');
+    Route::get('/admin_dashboard/pengajuan_pensiun_pegawai', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'pengajuanIndex'])->name('admin.pengajuan-pensiun-pegawai.index');
+    Route::get('/admin_dashboard/pengajuan_pensiun_pegawai/detail/{id}', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'pengajuanDetail'])->name('admin.pengajuan-pensiun-pegawai.detail');
+    
+    Route::get('/admin_dashboard/pensiun_unitkerja', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'index'])->name('admin.pensiun-unitkerja.index');
+    Route::get('/admin_dashboard/pensiun_unitkerja/detail/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'detail'])->name('admin.pensiun-unitkerja.detail');
+    Route::post('/admin_dashboard/pensiun_unitkerja/forward/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'forward'])->name('admin.pensiun-unitkerja.forward');
+    Route::get('/admin_dashboard/pengajuan_pensiun_unitkerja', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'pengajuanIndex'])->name('admin.pengajuan-pensiun-unitkerja.index');
+    Route::get('/admin_dashboard/pengajuan_pensiun_unitkerja/detail/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'pengajuanDetail'])->name('admin.pengajuan-pensiun-unitkerja.detail');
 });
 
 Route::middleware('role:unitkerja')->group(function () {
@@ -173,6 +200,9 @@ Route::middleware('role:unitkerja')->group(function () {
     Route::get('/unitkerja_dashboard/permohonan_penugasan/edit/{id}', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'edit'])->name('unitkerja.permohonan-penugasan.edit');
     Route::get('/unitkerja_dashboard/permohonan_penugasan/delete/{id}', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'delete'])->name('unitkerja.permohonan-penugasan.delete');
     Route::put('/unitkerja_dashboard/permohonan_penugasan/update/{id}', [App\Http\Controllers\Unitkerja\PermohonanPenugasanController::class, 'update'])->name('unitkerja.permohonan-penugasan.update');
+    
+    Route::get('/unitkerja_dashboard/penugasan', [App\Http\Controllers\Unitkerja\PenugasanUnitKerjaController::class, 'index'])->name('unitkerja.penugasan.index');
+    Route::get('/unitkerja_dashboard/penugasan/detail/{id}', [App\Http\Controllers\Unitkerja\PenugasanUnitKerjaController::class, 'detail'])->name('unitkerja.penugasan.detail');
 });
 
 Route::middleware('role:pelamar')->group(function () {
@@ -219,6 +249,22 @@ Route::middleware('role:pimpinan')->group(function () {
     Route::get('/pimpinan_dashboard/re_kontrak_unitkerja', [App\Http\Controllers\Pimpinan\KontrakUnitKerjaController::class, 'index'])->name('pimpinan.re-kontrak-unitkerja.index');
     Route::get('/pimpinan_dashboard/re_kontrak_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\KontrakUnitKerjaController::class, 'detail'])->name('pimpinan.re-kontrak-unitkerja.detail');
     Route::post('/pimpinan_dashboard/re_kontrak_unitkerja/submit/{id}', [App\Http\Controllers\Pimpinan\KontrakUnitKerjaController::class, 'submit'])->name('pimpinan.re-kontrak-unitkerja.submit');
+    
+    Route::get('/pimpinan_dashboard/penugasan_pegawai', [App\Http\Controllers\Pimpinan\PenugasanPegawaiController::class, 'index'])->name('pimpinan.penugasan-pegawai.index');
+    Route::get('/pimpinan_dashboard/penugasan_pegawai/detail/{id}', [App\Http\Controllers\Pimpinan\PenugasanPegawaiController::class, 'detail'])->name('pimpinan.penugasan-pegawai.detail');
+    Route::get('/pimpinan_dashboard/penugasan_pegawai/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\PenugasanPegawaiController::class, 'submit'])->name('pimpinan.penugasan-pegawai.submit');
+    
+    Route::get('/pimpinan_dashboard/penugasan_unitkerja', [App\Http\Controllers\Pimpinan\PenugasanUnitKerjaController::class, 'index'])->name('pimpinan.penugasan-unitkerja.index');
+    Route::get('/pimpinan_dashboard/penugasan_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\PenugasanUnitKerjaController::class, 'detail'])->name('pimpinan.penugasan-unitkerja.detail');
+    Route::get('/pimpinan_dashboard/penugasan_unitkerja/submit/{id}/{status}', [App\Http\Controllers\Pimpinan\PenugasanUnitKerjaController::class, 'submit'])->name('pimpinan.penugasan-unitkerja.submit');
+    
+    Route::get('/pimpinan_dashboard/pensiun_pegawai', [App\Http\Controllers\Pimpinan\PensiunPegawaiController::class, 'index'])->name('pimpinan.pensiun-pegawai.index');
+    Route::get('/pimpinan_dashboard/pensiun_pegawai/detail/{id}', [App\Http\Controllers\Pimpinan\PensiunPegawaiController::class, 'detail'])->name('pimpinan.pensiun-pegawai.detail');
+    Route::get('/pimpinan_dashboard/pensiun_pegawai/submit/{id}', [App\Http\Controllers\Pimpinan\PensiunPegawaiController::class, 'submit'])->name('pimpinan.pensiun-pegawai.submit');
+    
+    Route::get('/pimpinan_dashboard/pensiun_unitkerja', [App\Http\Controllers\Pimpinan\PensiunUnitKerjaController::class, 'index'])->name('pimpinan.pensiun-unitkerja.index');
+    Route::get('/pimpinan_dashboard/pensiun_unitkerja/detail/{id}', [App\Http\Controllers\Pimpinan\PensiunUnitKerjaController::class, 'detail'])->name('pimpinan.pensiun-unitkerja.detail');
+    Route::get('/pimpinan_dashboard/pensiun_unitkerja/submit/{id}', [App\Http\Controllers\Pimpinan\PensiunUnitKerjaController::class, 'submit'])->name('pimpinan.pensiun-unitkerja.submit');
 });
 
 Route::middleware('role:pegawai')->group(function () {
@@ -244,4 +290,7 @@ Route::middleware('role:pegawai')->group(function () {
     Route::get('/pegawai_dashboard/permohonan_penugasan/edit/{id}', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'edit'])->name('pegawai.permohonan-penugasan.edit');
     Route::get('/pegawai_dashboard/permohonan_penugasan/delete/{id}', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'delete'])->name('pegawai.permohonan-penugasan.delete');
     Route::put('/pegawai_dashboard/permohonan_penugasan/update/{id}', [App\Http\Controllers\Pegawai\PermohonanPenugasanController::class, 'update'])->name('pegawai.permohonan-penugasan.update');
+    
+    Route::get('/pegawai_dashboard/penugasan', [App\Http\Controllers\Pegawai\PenugasanPegawaiController::class, 'index'])->name('pegawai.penugasan.index');
+    Route::get('/pegawai_dashboard/penugasan/detail/{id}', [App\Http\Controllers\Pegawai\PenugasanPegawaiController::class, 'detail'])->name('pegawai.penugasan.detail');
 });

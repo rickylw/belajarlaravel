@@ -15,12 +15,12 @@
         
         
         <div class="card">
-        <div class="card-header"> Tambah Data Penugasan
+        <div class="card-header"> Tambah Penugasan Unit Kerja
         </div>
         
         <div class="card-body">
-        <form class="form-horizontal" action="{{ route('penugasan.store') }}" method="post"> 
-            @include('penugasan.form')
+        <form class="form-horizontal" action="{{ route('admin.penugasan-unitkerja.store') }}" method="post" enctype="multipart/form-data"> 
+            @include('admin.penugasan-unitkerja.form')
         </form>
         </div>
         
@@ -28,4 +28,14 @@
         
         </div>
         </div>
+@endsection
+
+@section('contentjs')
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor' );
+</script>
+<script src="{{asset('assets/dist/js/pages/admin/jadwal-tes.js')}}"></script>
+    
 @endsection

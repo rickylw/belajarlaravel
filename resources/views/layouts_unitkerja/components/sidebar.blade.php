@@ -51,6 +51,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('unitkerja.penugasan.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Penugasan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('unitkerja.resign.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>

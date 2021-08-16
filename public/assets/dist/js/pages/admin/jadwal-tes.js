@@ -2,6 +2,10 @@ $('#datetimepicker1').datetimepicker({
     format: 'HH:mm'
 });
 
+$('#datetimepicker2').datetimepicker({
+    format: 'HH:mm'
+});
+
 $('#dropdown-pelamar a').on("click", function(){
     $('#btn-pelamar').html($(this).html());
     $('#pelamar').val($(this).attr('id'));
@@ -44,4 +48,12 @@ $('#group-radio div input').on("click", function(){
         $('#waktu-kontrak')[0].disabled = true;
         $('#tipe').val(1);
     }
+})
+
+$('#internal').on('click', function(){
+    $('#jenis-penugasan').val(0);
+})
+
+$('#external').on('click', function(){
+    $('#jenis-penugasan').val(1);
 })
