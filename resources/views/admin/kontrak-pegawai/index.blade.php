@@ -49,11 +49,17 @@
             </table>
         </div>
         
-        {{-- <div class="card-footer clearfix text-center">
-            <div class="mt-2">
-                {{ $pelamar->links() }}
-            </div>
-        </div> --}}
+        <div class="text-center">
+            <a href="{{$pegawai->previousPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-left"></i>
+            </a>
+            @for($i=1;$i<=$pegawai->lastPage();$i++)
+                <a href="{{$pegawai->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$pegawai->nextPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
     

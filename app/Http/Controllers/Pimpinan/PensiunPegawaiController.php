@@ -13,8 +13,9 @@ class PensiunPegawaiController extends Controller
     public function index(){
         $pegawai = DB::table('tbl_datapegawai')
                     ->join('tbl_pensiun_pegawai', 'tbl_pensiun_pegawai.id_pegawai', '=', 'tbl_datapegawai.id')
-                    ->select(DB::raw('tbl_datapegawai.*, tbl_pensiun_pegawai.analisis_sdm as analisis_sdm, tbl_pensiun_pegawai.id as id_pensiun'))
+                    ->select(DB::raw('tbl_datapegawai.*, tbl_pensiun_pegawai.analisis_sdm as analisis_sdm, tbl_pensiun_pegawai.id as id_pensiun, (year(now()) - year(tbl_datapegawai.tanggal_lahir)) as selisih_tahun'))
                     ->where('tbl_pensiun_pegawai.status', 0)
+                    ->having('selisih_tahun', '>=', 65)
                     ->paginate(10);
         return view('pimpinan.pensiun-pegawai.index', compact('pegawai'));
     }

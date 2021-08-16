@@ -13,8 +13,9 @@ class PensiunUnitKerjaController extends Controller
     public function index(){
         $unitkerja = DB::table('tbl_dataunitkerja')
                     ->join('tbl_pensiun_unitkerja', 'tbl_pensiun_unitkerja.id_unitkerja', '=', 'tbl_dataunitkerja.id')
-                    ->select(DB::raw('tbl_dataunitkerja.*, tbl_pensiun_unitkerja.analisis_sdm as analisis_sdm, tbl_pensiun_unitkerja.id as id_pensiun'))
+                    ->select(DB::raw('tbl_dataunitkerja.*, tbl_pensiun_unitkerja.analisis_sdm as analisis_sdm, tbl_pensiun_unitkerja.id as id_pensiun, (year(now()) - year(tbl_dataunitkerja.tanggal_lahir)) as selisih_tahun'))
                     ->where('tbl_pensiun_unitkerja.status', 0)
+                    ->having('selisih_tahun', '>=', 65)
                     ->paginate(10);
         return view('pimpinan.pensiun-unitkerja.index', compact('unitkerja'));
     }
@@ -28,9 +29,9 @@ class PensiunUnitKerjaController extends Controller
     }
 
     public function submit($id) {
-        $pensiunPegawawi = PensiunUnitKerja::where('id', $id)->first();
-        $pensiunPegawawi->status = 1;
-        $pensiunPegawawi->save();
+        $pensiunPegawai = PensiunUnitKerja::where('id', $id)->first();
+        $pensiunPegawai->status = 1;
+        $pensiunPegawai->save();
 
         return redirect()->route("pimpinan.pensiun-unitkerja.index")->with( 
         "success", 

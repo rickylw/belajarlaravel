@@ -369,7 +369,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="/pensiun" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -455,7 +455,7 @@
                 Resign
               </p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-header">Pembuatan Akun</li>
           <li class="nav-item">
             <a href="/daftarakun" class="nav-link active">

@@ -28,7 +28,7 @@
 
         <div class="row text-center mt-4">
             <div class="col-sm-12">
-                <h3><b><u>SURAT KETERANGAN</u></b></h3>
+                <h3><b><u>SURAT KETERANGAN PENSIUN</u></b></h3>
                 <p>(Nomor Surat)</p>
             </div>
         </div>
@@ -37,7 +37,7 @@
             <div class="row"><p>PT.Nama Perusahaan menyatakan dengan sesungguhnya bahwa :</p></div>
             <div class="row">
                 <div class="col-xs-4">
-                    <p>Nama : {{$pelamar->nama}}</p>
+                    <p>Nama : {{$pensiunUnitKerja->nama}}</p>
                 </div>
                 <div class="col-xs-8 text-center">
                     
@@ -45,15 +45,15 @@
             </div>
             <div class="row">
                 <div class="col-xs-4">
-                    <p>Tempat, Tanggal Lahir :  <?php echo ($pelamar->tempat_lahir .', '. date('d M Y', strtotime($pelamar->tanggal_lahir)))?></p>
+                    <p>Pekerjaan : Unit Kerja</p>
                 </div>
                 <div class="col-xs-8 text-center">
-                   
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-4">
-                    <p>Foto Diri : </p><img src="{{public_path($pelamar->foto_diri)}}" height="100px" alt="">
+                    <p>Jabatan : {{$pensiunUnitKerja->jabatan}}</p>
                 </div>
                 <div class="col-xs-8 text-center">
                     
@@ -62,9 +62,9 @@
         </div>
 
         <div class="mt-4">
-            <div class="row" style="text-align: justify"><p>Adalah benar-benar karyawan PT Nama Perusahaan yang bekerja di bagian (departemen tempat bekerja) sebagai (jabatan). Surat keterangan ini dibuat sebagai syarat pembukaan rekening di (nama bank) untuk proses penerimaan gaji karyawan. Demikian surat keterangan ini dibuat agar dipergunakan sebagaimana mestinya.</p></div>
+            <div class="row" style="text-align: justify"><p>Benar-benar telah pensiun bekerja pada perusahaan saat unit kerja tersebut telah genap berusia 65 (enam puluh lima) tahun. Demikian surat keterangan ini dibuat agar dipergunakan sebagaimana mestinya.</p></div>
             <br>
-            <div class="row"><p>Palembang, (Tanggal Pembuatan Surat)</p></div>
+            <div class="row"><p>Palembang, {{date('h M Y')}}</p></div>
             <div class="row"><p>PT Nama Perusahaan</p></div>
             <br>
             <br>

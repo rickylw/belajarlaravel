@@ -148,12 +148,14 @@ Route::middleware('role:admin')->group(function () {
     Route::post('/admin_dashboard/pensiun_pegawai/forward/{id}', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'forward'])->name('admin.pensiun-pegawai.forward');
     Route::get('/admin_dashboard/pengajuan_pensiun_pegawai', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'pengajuanIndex'])->name('admin.pengajuan-pensiun-pegawai.index');
     Route::get('/admin_dashboard/pengajuan_pensiun_pegawai/detail/{id}', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'pengajuanDetail'])->name('admin.pengajuan-pensiun-pegawai.detail');
+    Route::get('/admin_dashboard/pengajuan_pensiun_pegawai/cetakSK/{id}', [App\Http\Controllers\Admin\PensiunPegawaiController::class, 'cetakSK'])->name('admin.pensiun-pegawai.cetak-sk');
     
     Route::get('/admin_dashboard/pensiun_unitkerja', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'index'])->name('admin.pensiun-unitkerja.index');
     Route::get('/admin_dashboard/pensiun_unitkerja/detail/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'detail'])->name('admin.pensiun-unitkerja.detail');
     Route::post('/admin_dashboard/pensiun_unitkerja/forward/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'forward'])->name('admin.pensiun-unitkerja.forward');
     Route::get('/admin_dashboard/pengajuan_pensiun_unitkerja', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'pengajuanIndex'])->name('admin.pengajuan-pensiun-unitkerja.index');
     Route::get('/admin_dashboard/pengajuan_pensiun_unitkerja/detail/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'pengajuanDetail'])->name('admin.pengajuan-pensiun-unitkerja.detail');
+    Route::get('/admin_dashboard/pengajuan_pensiun_unitkerja/cetakSK/{id}', [App\Http\Controllers\Admin\PensiunUnitKerjaController::class, 'cetakSK'])->name('admin.pensiun-unitkerja.cetak-sk');
 });
 
 Route::middleware('role:unitkerja')->group(function () {

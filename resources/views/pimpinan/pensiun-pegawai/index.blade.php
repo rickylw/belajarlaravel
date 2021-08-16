@@ -19,8 +19,8 @@
                         <th style="width: 12%">Nama</th>
                         <th style="width: 30%">Foto</th>
                         <th style="width: 10%">Jenis Kelamin</th>
-                        <th style="width: 15%">Email</th>
                         <th style="width: 10%">Jabatan</th>
+                        <th style="width: 15%">Umur</th>
                         <th style="width: 10%">Status</th>
                         <th style="width: 10%">Aksi</th>
                     </tr>
@@ -37,8 +37,8 @@
                             <img height="150px" src="{{asset($item->foto_diri)}}" alt="">
                         </td>
                         <td>{{ ($item->jenis_kelamin == 0) ? 'Laki-Laki' : 'Perempuan' }}</td>
-                        <td>{{ $item->email }}</td>
                         <td>{{ $item->jabatan }}</td>
+                        <td>{{ $item->selisih_tahun }} tahun</td>
                         <td>{{ ($item->status == 0) ? 'Tidak Bekerja' : 'Sedang Bekerja' }}</td>
                         
                         <td>

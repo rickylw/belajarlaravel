@@ -79,7 +79,7 @@ class UsersTableSeeder extends Seeder
             DB::table('datapelamar')->insert([
               'nama' => 'pelamar',
               'tempat_lahir' => 'Palembang',
-              'tanggal_lahir' => '2021-07-09',
+              'tanggal_lahir' => '1950-07-09',
               'jenis_kelamin' => 0,
               'email' => '123@gmail.com',
               'no_hp' => '00000000',

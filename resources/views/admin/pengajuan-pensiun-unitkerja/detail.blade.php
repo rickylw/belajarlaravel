@@ -10,7 +10,7 @@
                 <div class="row justify-content-between">
                     <h4 class="my-auto">Detail Unit Kerja</h4>                    
                     @if ($unitkerja->status_pensiun == 1)
-                        <a href="{{asset($unitkerja->status_pensiun)}}" class="btn btn-success ml-4">Surat Pensiun</a>
+                    <a href="{{(isset($unitkerja->surat_keterangan_pensiun) ? asset($unitkerja->surat_keterangan_pensiun) : route('admin.pensiun-unitkerja.cetak-sk', $unitkerja->id_pensiun))}}" class="btn btn-success ml-4">Cetak SK</a>
                     @endif
                 </div>
             </a>

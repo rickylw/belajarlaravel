@@ -62,10 +62,16 @@
             </table>
         </div>
         
-        <div class="card-footer clearfix text-center">
-            <div class="mt-2">
-                {{ $pelamar->links() }}
-            </div>
+        <div class="text-center">
+            <a href="{{$pelamar->previousPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-left"></i>
+            </a>
+            @for($i=1;$i<=$pelamar->lastPage();$i++)
+                <a href="{{$pelamar->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$pelamar->nextPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-right"></i>
+            </a>
         </div>
         
     </div>
