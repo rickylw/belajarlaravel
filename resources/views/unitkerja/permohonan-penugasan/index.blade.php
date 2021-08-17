@@ -53,11 +53,17 @@
             </table>
         </div>
         
-        {{-- <div class="card-footer clearfix text-center">
-            <div class="mt-2">
-                {{ $lowonganPekerjaan->links() }}
-            </div>
-        </div> --}}
+        <div class="text-center">
+            <a href="{{$permohonanUnitKerja->previousPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-left"></i>
+            </a>
+            @for($i=1;$i<=$permohonanUnitKerja->lastPage();$i++)
+                <a href="{{$permohonanUnitKerja->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$permohonanUnitKerja->nextPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-right"></i>
+            </a>
+        </div>
         
         </div>
         

@@ -100,8 +100,16 @@
         
         </div>
         
-        <div class="card-footer clearfix text-right">
-        {{ $data->links() }}
+        <div class="text-center">
+            <a href="{{$data->previousPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-left"></i>
+            </a>
+            @for($i=1;$i<=$data->lastPage();$i++)
+                <a href="{{$data->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$data->nextPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-right"></i>
+            </a>
         </div>
         
         </div>

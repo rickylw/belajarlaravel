@@ -55,11 +55,17 @@
             </table>
         </div>
         
-        {{-- <div class="card-footer clearfix text-center">
-            <div class="mt-2">
-                {{ $pelamar->links() }}
-            </div>
-        </div> --}}
+        <div class="text-center">
+            <a href="{{$penugasanUnitKerja->previousPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-left"></i>
+            </a>
+            @for($i=1;$i<=$penugasanUnitKerja->lastPage();$i++)
+                <a href="{{$penugasanUnitKerja->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$penugasanUnitKerja->nextPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
     

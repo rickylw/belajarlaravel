@@ -66,10 +66,16 @@
             </table>
         </div>
         
-        <div class="card-footer clearfix text-center">
-            <div class="mt-2">
-                {{ $tampil->links() }}
-            </div>
+        <div class="text-center">
+            <a href="{{$tampil->previousPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-left"></i>
+            </a>
+            @for($i=1;$i<=$tampil->lastPage();$i++)
+                <a href="{{$tampil->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$tampil->nextPageUrl()}}">
+                <i class="fas fa-fw fa-chevron-right"></i>
+            </a>
         </div>
         
         </div>
