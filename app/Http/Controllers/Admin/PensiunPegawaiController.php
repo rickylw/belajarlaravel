@@ -18,6 +18,7 @@ class PensiunPegawaiController extends Controller
                     ->leftJoin('tbl_pensiun_pegawai', 'tbl_pensiun_pegawai.id_pegawai', '=', 'tbl_datapegawai.id')
                     ->select(DB::raw('tbl_datapegawai.*, (year(now()) - year(tbl_datapegawai.tanggal_lahir)) as selisih_tahun'))
                     ->whereNull('tbl_pensiun_pegawai.id')
+                    ->where('tbl_datapegawai.status', 1)
                     ->having('selisih_tahun', '>=', 65)
                     ->paginate(10);                    
         return view('admin.pensiun-pegawai.index', compact('pegawai'));

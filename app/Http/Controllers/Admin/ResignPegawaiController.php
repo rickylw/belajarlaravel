@@ -38,9 +38,10 @@ class ResignPegawaiController extends Controller
         $this->validate($request, [ 
             'editor' => 'required'
         ]);
+        $now = DB::select('select now() as date')[0]->date;
 
         $resignPegawai = ResignPegawai::where('id', $id)->first();
-        $resignPegawai->diketahui_sdm = date('Y-m-d H:i:s');
+        $resignPegawai->diketahui_sdm = $now;
         $resignPegawai->analisis_sdm = $request->editor;
         $resignPegawai->save();
 

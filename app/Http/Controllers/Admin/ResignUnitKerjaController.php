@@ -38,9 +38,10 @@ class ResignUnitKerjaController extends Controller
         $this->validate($request, [ 
             'editor' => 'required'
         ]);
+        $now = DB::select('select now() as date')[0]->date;
 
         $resignUnitKerja = ResignUnitKerja::where('id', $id)->first();
-        $resignUnitKerja->diketahui_sdm = date('Y-m-d H:i:s');
+        $resignUnitKerja->diketahui_sdm = $now;
         $resignUnitKerja->analisis_sdm = $request->editor;
         $resignUnitKerja->save();
 

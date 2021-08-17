@@ -29,8 +29,9 @@ class TrainingUnitKerjaController extends Controller
     }
 
     public function forward($id){
+        $now = DB::select('select now() as date')[0]->date;
         $trainingUnitKerja = TrainingUnitKerja::where('id', $id)->first();
-        $trainingUnitKerja->diketahui_sdm = date('Y-m-d H:i:s');
+        $trainingUnitKerja->diketahui_sdm = $now;
         $trainingUnitKerja->save();
 
         return redirect()->route("admin.training-unitkerja.index")->with( 

@@ -29,8 +29,9 @@ class TrainingPegawaiController extends Controller
     }
 
     public function forward($id){
+        $now = DB::select('select now() as date')[0]->date;
         $trainingPegawai = TrainingPegawai::where('id', $id)->first();
-        $trainingPegawai->diketahui_sdm = date('Y-m-d H:i:s');
+        $trainingPegawai->diketahui_sdm = $now;
         $trainingPegawai->save();
 
         return redirect()->route("admin.training-pegawai.index")->with( 

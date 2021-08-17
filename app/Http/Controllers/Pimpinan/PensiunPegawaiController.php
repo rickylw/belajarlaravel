@@ -29,9 +29,13 @@ class PensiunPegawaiController extends Controller
     }
 
     public function submit($id) {
-        $pensiunPegawawi = PensiunPegawai::where('id', $id)->first();
-        $pensiunPegawawi->status = 1;
-        $pensiunPegawawi->save();
+        $pensiunPegawai = PensiunPegawai::where('id', $id)->first();
+        $pensiunPegawai->status = 1;
+        $pensiunPegawai->save();
+
+        $pegawai = DataPegawai::where('id', $pensiunPegawai->id_pegawai)->first();
+        $pegawai->status = 0;
+        $pegawai->save();
 
         return redirect()->route("pimpinan.pensiun-pegawai.index")->with( 
         "success", 

@@ -49,7 +49,7 @@ class LoginController extends Controller
 
     
         default:
-          return '/home'; 
+          return '/login'; 
         break;
       }
     }

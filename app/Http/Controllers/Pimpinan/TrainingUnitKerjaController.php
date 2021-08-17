@@ -29,8 +29,9 @@ class TrainingUnitKerjaController extends Controller
     }
     
     public function submit($id, $status) {
+        $now = DB::select('select now() as date')[0]->date;
         $trainingUnitKerja = TrainingUnitKerja::where('id', $id)->first();
-        $trainingUnitKerja->diketahui_pimpinan = date('Y-m-d H:i:s');
+        $trainingUnitKerja->diketahui_pimpinan = $now;
         $trainingUnitKerja->status = $status;
         $trainingUnitKerja->save();
 

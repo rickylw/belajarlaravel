@@ -29,9 +29,13 @@ class PensiunUnitKerjaController extends Controller
     }
 
     public function submit($id) {
-        $pensiunPegawai = PensiunUnitKerja::where('id', $id)->first();
-        $pensiunPegawai->status = 1;
-        $pensiunPegawai->save();
+        $pensiunUnitKerja = PensiunUnitKerja::where('id', $id)->first();
+        $pensiunUnitKerja->status = 1;
+        $pensiunUnitKerja->save();
+
+        $unitkerja = DataUnitKerja::where('id', $pensiunUnitKerja->id_unitkerja)->first();
+        $unitkerja->status = 0;
+        $unitkerja->save();
 
         return redirect()->route("pimpinan.pensiun-unitkerja.index")->with( 
         "success", 

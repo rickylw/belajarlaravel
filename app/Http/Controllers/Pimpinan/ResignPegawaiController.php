@@ -31,8 +31,9 @@ class ResignPegawaiController extends Controller
     }
 
     public function submit($id, $status) {
+        $now = DB::select('select now() as date')[0]->date;
         $resignPegawai = ResignPegawai::where('id', $id)->first();
-        $resignPegawai->diketahui_pimpinan = date('Y-m-d H:i:s');
+        $resignPegawai->diketahui_pimpinan = $now;
         $resignPegawai->status = $status;
         $resignPegawai->save();
 
