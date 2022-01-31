@@ -21,7 +21,7 @@
         <div class="card-body">
         <form class="form-horizontal" action="{{ route('admin.mutasi-pegawai.store') }}" method="post" enctype="multipart/form-data"> 
             {{ csrf_field() }}
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="nama" class="col-sm-2 control-label">Pegawai</label>
                 <div class="col-sm-10">
                 <div class="dropdown">
@@ -38,6 +38,18 @@
                 @endif
                 </div>
                 </div>
+            </div> --}}
+
+            <div class="form-group mx-2">
+                <label>Pegawai</label>
+                <select class='form-control' name='pegawai' id='pegawai' required>
+                    <option class="" value="">Pilih Pegawai</option>
+                    @foreach ($pegawai as $v)
+                        <option value="{{ $v->id }}">
+                            {{ $v->id . ' - ' . $v->nama }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             
             <div class="form-group mx-2">
@@ -89,6 +101,10 @@
 <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
 <script type="text/javascript">
     CKEDITOR.replace( 'editor' );
+
+    $(document).ready(function() {
+        $('#pendonor_id').select2();
+    });
 </script>
 <script src="{{asset('assets/dist/js/pages/admin/jadwal-tes.js')}}"></script>
     
